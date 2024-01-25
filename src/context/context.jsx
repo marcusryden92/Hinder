@@ -1,12 +1,10 @@
 import { createContext, useState } from "react";
 
-// Creating the context and assign it to a variable
 export const ContextProvider = createContext({
   example: null,
   exampleFunction: () => {},
 });
 
-// example function in the context
 export const Context = ({ children }) => {
   const [number, setNumber] = useState(0);
 
