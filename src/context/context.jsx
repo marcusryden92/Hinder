@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 
 // Creating the context and assign it to a variable
 export const ContextProvider = createContext({
