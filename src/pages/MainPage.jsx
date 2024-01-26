@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import { Link } from "react-router-dom";
 
 export default function MainPage() {
   const { add } = useContext(ContextProvider);
