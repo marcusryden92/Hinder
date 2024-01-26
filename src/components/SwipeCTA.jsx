@@ -20,7 +20,7 @@ function SwipeCTA() {
           alt=""
         ></img>
       </div>
-      <div class="flex flex-col flex-colleading-normal flex-1 p-5 ">
+      <div class="flex flex-col flex-colleading-normal flex-1 p-5 justify-center">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
           UserName
         </h5>
