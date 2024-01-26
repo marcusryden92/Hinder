@@ -3,12 +3,11 @@ import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 
 export default function Header() {
-  const { number } = useContext(ContextProvider);
-
   return (
-    <div className={`bg-pink-500`}>
-      <p>Header</p>
-      <div>{number}</div>
+    <div
+      className={`bg-gray-500 p-2 h-14 hover:bg-blue-500 transition ease-in-out duration-500`}
+    >
+      <div></div>
     </div>
   );
 }
