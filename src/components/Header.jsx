@@ -1,13 +1,73 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 
+import { HiMiniHeart } from "react-icons/hi2";
+import { MdOutlineExitToApp } from "react-icons/md";
+
 export default function Header() {
+  const ICONSIZE = 35;
+
+  let MATCHCOUNT = 1;
+
   return (
     <div
-      className={`bg-gray-500 p-2 h-14 hover:bg-blue-500 transition ease-in-out duration-500`}
+      className={`
+      flex 
+      flex-row
+      flex-end
+      justify-between
+      items-center
+      align-middle
+      w-screen 
+      p-2 h-14
+      pt-2 
+      shadow-lg
+      text-white 
+      bg-zinc-900 
+      
+      `}
     >
-      <div></div>
+      <div className="header-icon bg-gray-400 font-bold h-8 w-8 rounded-full mx-1">
+        MR
+      </div>
+
+      <Link to="/MainPage" className="flex flex-row font-bold ml-20">
+        <div className="text-2xl text-white py-0 px-1">Hi</div>
+        <div className="text-2xl text-black bg-orange-500 py-0 px-1 rounded-md">
+          nder
+        </div>
+      </Link>
+
+      <div className="self-end flex flex-row">
+        <div className=" header-icon text-2xl flex justify-center items-end w-20 mr-2">
+          <Link to="/Matches">
+            <HeaderIcon
+              icon={
+                <HiMiniHeart
+                  size={ICONSIZE}
+                  className="text-gray-400 hover:text-rose-700 transition ease-in-out duration-500"
+                />
+              }
+            />
+          </Link>
+          <div className="mb-0.5 mr-1 text-gray-400">{MATCHCOUNT}</div>
+        </div>
+
+        <HeaderIcon
+          icon={
+            <MdOutlineExitToApp
+              size={ICONSIZE}
+              className="text-gray-700 hover:text-white transition ease-in-out duration-500"
+            />
+          }
+        />
+      </div>
     </div>
   );
 }
+
+const HeaderIcon = ({ icon }) => {
+  return <div className="header-icon pt-2">{icon}</div>;
+};
