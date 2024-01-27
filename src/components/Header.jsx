@@ -8,8 +8,7 @@ import { MdOutlineExitToApp } from "react-icons/md";
 
 export default function Header() {
   const ICONSIZE = 35;
-
-  let MATCHCOUNT = 1;
+  let MATCHCOUNT = 2;
 
   return (
     <div
@@ -47,12 +46,20 @@ export default function Header() {
               icon={
                 <HiMiniHeart
                   size={ICONSIZE}
-                  className="text-gray-400 hover:text-rose-700 transition ease-in-out duration-500"
+                  className={`${
+                    MATCHCOUNT ? "text-rose-700" : "text-gray-400"
+                  } hover:text-rose-500 transition ease-in-out duration-500`}
                 />
               }
             />
           </Link>
-          <div className="mb-0.5 mr-1 text-gray-400">{MATCHCOUNT}</div>
+          <div
+            className={`text-xl mb-0.5 mr-1 ${
+              MATCHCOUNT ? "text-white" : "text-gray-400"
+            }`}
+          >
+            {MATCHCOUNT}
+          </div>
         </div>
 
         <HeaderIcon
