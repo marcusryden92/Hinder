@@ -32,7 +32,10 @@ export default function Header() {
         MR
       </div>
 
-      <Link to="/MainPage" className="flex flex-row font-bold ml-20">
+      <Link
+        to="/MainPage"
+        className="flex flex-row font-bold ml-32 hover:scale-105 transition ease-in-out duration-500"
+      >
         <div className="text-2xl text-white py-0 px-1">Hi</div>
         <div className="text-2xl text-black bg-orange-500 py-0 px-1 rounded-md">
           nder
@@ -47,8 +50,10 @@ export default function Header() {
                 <HiMiniHeart
                   size={ICONSIZE}
                   className={`${
-                    MATCHCOUNT ? "text-rose-700" : "text-gray-400"
-                  } hover:text-rose-500 transition ease-in-out duration-500`}
+                    MATCHCOUNT
+                      ? "text-rose-700 hover:text-rose-500"
+                      : "text-gray-400 hover:text-gray-200"
+                  } hover:scale-110 transition ease-in-out duration-500`}
                 />
               }
             />
@@ -61,15 +66,16 @@ export default function Header() {
             {MATCHCOUNT}
           </div>
         </div>
-
-        <HeaderIcon
-          icon={
-            <MdOutlineExitToApp
-              size={ICONSIZE}
-              className="text-gray-700 hover:text-white transition ease-in-out duration-500"
-            />
-          }
-        />
+        <Link to="/LoginPage">
+          <HeaderIcon
+            icon={
+              <MdOutlineExitToApp
+                size={ICONSIZE}
+                className="text-gray-700 hover:text-gray-200 transition ease-in-out duration-500"
+              />
+            }
+          />
+        </Link>
       </div>
     </div>
   );
