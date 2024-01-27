@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 export default function SwipeCTA() {
   const [quote, setQuote] = useState(null);
   const [image, setImage] = useState("https://source.unsplash.com/random");
+  const [animateMatch, setAnimateMatch] = useState(false);
+  const [animateMismatch, setanimateMismatch] = useState(false);
+
+  if (animateMatch || animateMismatch) {
+    setTimeout(() => {
+      setAnimateMatch(false);
+      setanimateMismatch(false);
+    }, 600);
+  }
 
   function renderImage() {
     fetch(`https://source.unsplash.com/random`).then((response) => {
@@ -34,19 +43,39 @@ export default function SwipeCTA() {
       <div
         className={`overflow-hidden relative h-auto w-[100%] md:h-[100%] md:w-auto rounded-lg flex-1 flex justify-center items-center gap-10`}
       >
-        <button className="text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border border-red-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem]">
+        <button
+          onClick={() => {
+            setanimateMismatch(!animateMismatch);
+            setTimeout(() => {
+              renderImage();
+            }, 300);
+          }}
+          className="text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border border-red-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem]"
+        >
           <span className="relative z-10 text-[2rem] grid m-auto">✖️</span>
         </button>
 
         <button
-          onClick={renderImage}
+          onClick={() => {
+            setAnimateMatch(!animateMatch);
+            setTimeout(() => {
+              renderImage();
+            }, 300);
+          }}
           className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem]"
         >
           <span className="relative z-10 text-[2rem] grid m-auto">✔️</span>
         </button>
 
         <img
-          className="object-cover block m-auto w-[100%] h-[100%] rounded-t-lg md:rounded-none md:rounded-s-lg"
+          className={`object-cover block m-auto w-[100%] h-[100%] rounded-t-lg md:rounded-none md:rounded-s-lg z-[-10] delay-75
+	  ${animateMatch ? "transition-translate duration-200  translate-x-[100%]" : ""}
+      	  ${
+            animateMismatch
+              ? "transition-translate duration-200  translate-x-[-100%]"
+              : ""
+          }
+    `}
           src={image}
           alt=""
         ></img>
