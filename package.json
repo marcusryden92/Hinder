@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.30.3",
+    "@clerk/themes": "^1.7.9",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.316.0",
     "match-sorter": "^6.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
