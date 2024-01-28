@@ -40,6 +40,12 @@ export default function SignIp() {
           <button className='w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/30 text-white font-semibold rounded-lg hover:bg-pink-400'>
             SIGN IN
           </button>
+          <p>
+            No member?{' '}
+            <a href='/SignUp' className=' font-bold'>
+              Register!
+            </a>
+          </p>
         </form>
       </div>
     </div>

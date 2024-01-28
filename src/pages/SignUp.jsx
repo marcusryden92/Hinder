@@ -50,11 +50,9 @@ export default function SignUp() {
           </button>
           <p>
             Already member?{' '}
-            <span>
-              <a href='/SignIn' className=' font-bold'>
-                Click here!
-              </a>
-            </span>{' '}
+            <a href='/SignIn' className=' font-bold'>
+              Click here!
+            </a>
           </p>
         </form>
       </div>
