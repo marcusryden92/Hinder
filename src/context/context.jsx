@@ -8,12 +8,8 @@ export const ContextProvider = createContext({
 export const Context = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const add = () => {
-    setNumber(number + 1);
-  };
   const value = {
-    number,
-    add,
+    user,
   };
 
   return (

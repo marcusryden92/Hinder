@@ -10,7 +10,7 @@ export default function App() {
     <Context>
       <BrowserRouter>
         <Routes>
-          <Route path="/SignIn" element={<SignIn />} />
+          <Route index element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/" element={<Root />}>
             <Route path="/MainPage" element={<MainPage />} />
