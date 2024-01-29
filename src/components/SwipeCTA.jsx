@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 export default function SwipeCTA() {
-  const [quote, setQuote] = useState(null);
   const [image, setImage] = useState("https://source.unsplash.com/random");
   const [animateMatch, setAnimateMatch] = useState(false);
   const [animateMismatch, setanimateMismatch] = useState(false);
@@ -19,24 +18,6 @@ export default function SwipeCTA() {
       setImage(response.url);
     });
   }
-  useEffect(() => {
-    async function fetchData() {
-      fetch("https://type.fit/api/quotes")
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          const randomQuote = Math.floor(Math.random() * data.length);
-          const newQuote = data[randomQuote].text;
-          if (newQuote.length > 70) {
-            fetchData();
-          } else {
-            setQuote(newQuote);
-          }
-        });
-    }
-    fetchData();
-  }, [image]);
 
   return (
     <div className="ml-auto mr-auto w-[95vw] h-[80vh] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 max-w-[60rem] max-h-[37rem] rounded-lg shadow-xl p-5">
@@ -90,9 +71,6 @@ export default function SwipeCTA() {
           about creating sleek websites, and by night, I'm capturing stories
           through my lens. I'm passionate about nature, love diving into virtual
           reality.
-          <div className=" font-normal rounded-lg text-gray-600 shadow-twe-inner pl-4 pt-4 italic">
-            “{quote}”
-          </div>
         </div>
       </div>
     </div>
