@@ -1,15 +1,21 @@
 import { createContext, useState } from "react";
 
 export const ContextProvider = createContext({
-  example: null,
-  exampleFunction: () => {},
+  userImage: null,
+  sveImage: () => {},
 });
 
 export const Context = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [userImage, setUserImage] = useState(null);
+
+  const saveImage = (img) => {
+    const imageSrc = img.current.getScreenshot();
+    setUserImage(imageSrc);
+  };
 
   const value = {
-    user,
+    userImage,
+    saveImage,
   };
 
   return (

@@ -1,14 +1,11 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useRef } from "react";
 import Webcam from "react-webcam";
+import { useContext } from "react";
+import { ContextProvider } from "../context/context";
 
 export default function Camera() {
   const webcamRef = useRef(null);
-  const [userImage, setUserImage] = useState(null);
-
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setUserImage(imageSrc);
-  }, [userImage]);
+  const { saveImage, userImage } = useContext(ContextProvider);
 
   return (
     <div className="flex flex-row w-[500px] h-[400px] rounded-[1.5rem] p-6 m-10 bg-white shadow-md shadow-gray-500">
@@ -22,7 +19,7 @@ export default function Camera() {
         ></Webcam>
         <button
           className="bg-rose-600 text-white px-5 py-2 my-5 rounded-lg"
-          onClick={capture}
+          onClick={() => saveImage(webcamRef)}
         >
           Capture
         </button>
