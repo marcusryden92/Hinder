@@ -10,7 +10,6 @@ export default function SignIp() {
           alt=''
         />
       </div>
-
       <div className=' bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center'>
         <form className=' max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center'>
           <h2 className='text-4xl dark:text-black mb-6 font-bold'>
