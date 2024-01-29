@@ -11,7 +11,7 @@ export default function Camera() {
   }, [userImage]);
 
   return (
-    <div className="flex flex-row w-[500px] h-[400px] rounded-[2rem] p-6 m-10 bg-white shadow-md shadow-gray-500">
+    <div className="flex flex-row w-[500px] h-[400px] rounded-[1.5rem] p-6 m-10 bg-white shadow-md shadow-gray-500">
       <div>
         <Webcam
           className="rounded-[1rem]"
@@ -21,7 +21,7 @@ export default function Camera() {
           ref={webcamRef}
         ></Webcam>
         <button
-          className="bg-rose-600 text-white px-5 py-2 my-5 rounded-xl"
+          className="bg-rose-600 text-white px-5 py-2 my-5 rounded-lg"
           onClick={capture}
         >
           Capture
@@ -34,7 +34,7 @@ export default function Camera() {
             <p>{user.userName}</p>
             <img src={user.image} className="w-20 h-20" alt="" />
           </div>
-        ))*/ <img className="rounded-[1.5rem] w-48 " src={userImage} />
+        ))*/ <img className="rounded-[1rem] w-48 " src={userImage} />
         }
       </div>
     </div>

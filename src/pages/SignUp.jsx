@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import loginImg from "../assets/login.jpg";
 import { useRef } from "react";
+import Camera from "../components/Camera";
+
 export default function SignUp() {
   const name = useRef();
   const description = useRef();
@@ -24,11 +26,11 @@ export default function SignUp() {
     }
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
-      <div className="hidden sm:block">
-        <img className="w-full h-full object-cover" src={loginImg} alt="" />
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gradient-to-r from-indigo-300 to-purple-500">
+      <div className=" flex items-center justify-center">
+        <Camera />
       </div>
-      <div className=" bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center">
+      <div className="  flex flex-col justify-center">
         <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center">
           <h2 className="text-4xl dark:text-black mb-6 font-bold">REGISTER</h2>
           <div className=" flex flex-col py-2 text-black">
