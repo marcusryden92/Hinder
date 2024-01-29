@@ -5,7 +5,6 @@ import MainPage from "./pages/MainPage";
 import Root from "./pages/Root";
 import { Context } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Matches from "./pages/Matches";
 
 
 export default function App() {
