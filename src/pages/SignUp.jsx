@@ -1,57 +1,78 @@
-import loginImg from '../assets/login.jpg';
-
+import { Link } from "react-router-dom";
+import loginImg from "../assets/login.jpg";
+import { useRef } from "react";
 export default function SignUp() {
+  const name = useRef();
+  const description = useRef();
+  const password = useRef();
+
+  const handleRegister = () => {
+    if (
+      name.current.value &&
+      description.current.value &&
+      password.current.value
+    ) {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = {
+        name: name.current.value,
+        password: password.current.value,
+        description: description.current.value,
+      };
+      users.push(user);
+      localStorage.setItem("users", JSON.stringify(users));
+      window.location.reload();
+    }
+  };
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
-      <div className='hidden sm:block'>
-        <img
-          className='w-full h-full object-cover'
-          src={loginImg}
-          alt=''
-        />
+    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
+      <div className="hidden sm:block">
+        <img className="w-full h-full object-cover" src={loginImg} alt="" />
       </div>
-      <div className=' bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center'>
-        <form className=' max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center'>
-          <h2 className='text-4xl dark:text-black mb-6 font-bold'>
-            REGISTER
-          </h2>
-          <div className=' flex flex-col py-2 text-black'>
-            <label>User Name</label>
+      <div className=" bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center">
+        <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center">
+          <h2 className="text-4xl dark:text-black mb-6 font-bold">REGISTER</h2>
+          <div className=" flex flex-col py-2 text-black">
+            <label> Name</label>
             <input
-              className='rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none'
-              type='text'
+              className="rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+              type="text"
+              ref={name}
             />
           </div>
-          <div className=' flex flex-col py-2 text-black'>
+          <div className=" flex flex-col py-2 text-black">
             <label>Password</label>
             <input
-              className='p-2 rounded-lg bg-gray-200 mt-2  focus:border-violet-800 focus:bg-purple-200 focus:outline-none'
-              type='password'
+              className="p-2 rounded-lg bg-gray-200 mt-2  focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+              type="password"
+              ref={password}
             />
           </div>
-          <div className=' flex flex-col py-2 text-black'>
+          <div className=" flex flex-col py-2 text-black">
             <label>Description</label>
             <textarea
-              className=' resize-none rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none'
-              placeholder='Some words to describe yourself ...'
-              type='text'
+              className=" resize-none rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+              placeholder="Some words to describe yourself ..."
+              type="text"
+              ref={description}
             />
           </div>
-          <div className='flex justify-between py-2'>
-            <p className='flex items-center'>
-              <input className='mr-2' type='checkbox' />
+          <div className="flex justify-between py-2">
+            <p className="flex items-center">
+              <input className="mr-2" type="checkbox" />
               Remember me
             </p>
             <p>Forgot password</p>
           </div>
-          <button className='hover:bg-pink-400 w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/40 text-white font-semibold rounded-lg'>
-            SIGN UP
-          </button>
+          <Link to={"/MainPage"}>
+            <button
+              onClick={handleRegister}
+              className="hover:bg-pink-400 w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/40 text-white font-semibold rounded-lg"
+            >
+              SIGN UP
+            </button>
+          </Link>
           <p>
-            Already member?{' '}
-            <a href='/SignIn' className=' font-bold'>
-              Click here!
-            </a>
+            Already member? <Link to="/SignIn">Click here!</Link>
           </p>
         </form>
       </div>
