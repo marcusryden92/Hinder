@@ -6,7 +6,7 @@ export const ContextProvider = createContext({
 });
 
 export const Context = ({ children }) => {
-  const [number, setNumber] = useState(0);
+  const [user, setUser] = useState({});
 
   const add = () => {
     setNumber(number + 1);
