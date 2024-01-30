@@ -20,6 +20,11 @@ export const Context = ({ children }) => {
     setAllUsers(users);
   }, [user]);
 
+  const saveImage = (img) => {
+    const imageSrc = img.current.getScreenshot();
+    setUserImage(imageSrc);
+  };
+
   const value = {
     userImage,
     saveImage,
