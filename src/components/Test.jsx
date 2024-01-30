@@ -16,7 +16,6 @@ function Test() {
           key={index}
         ></img>
       ))}
-      ;
     </div>
   );
 }

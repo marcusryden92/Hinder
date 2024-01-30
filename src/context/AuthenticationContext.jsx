@@ -20,7 +20,7 @@ export const AuthenticationProvider = ({ children }) => {
     if (users) {
       setAllUsers(users);
     }
-  }, [user]);
+  }, []);
 
   function handleLogIn(username, password) {
     const userFound = allUsers.find((userObj) => {

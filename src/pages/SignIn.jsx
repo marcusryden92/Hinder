@@ -4,16 +4,13 @@ import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import { Navigate } from "react-router-dom";
-import {
-  AuthenticationProvider,
-  useAuth,
-} from "../context/AuthenticationContext";
+import { useAuth } from "../context/AuthenticationContext";
 
-export default function SignIp() {
+export default function SignIn() {
   const usernameBox = useRef();
   const passwordBox = useRef();
   const navigate = useNavigate();
-  const { handleLogIn } = useAuth;
+  const { handleLogIn } = useAuth();
 
   const goToHomePage = () => {
     navigate("/MainPage");

@@ -5,6 +5,7 @@ import Root from "./pages/Root";
 import { Context } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthenticationProvider } from "./context/AuthenticationContext";
+import PrivateRoutes from "./components/PrivateRoutes";
 
 export default function App() {
   return (
@@ -14,8 +15,10 @@ export default function App() {
           <Routes>
             <Route index element={<SignIn />} />
             <Route path="/SignUp" element={<SignUp />} />
-            <Route path="/MainPage" element={<Root />}>
-              <Route index element={<MainPage />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/MainPage" element={<Root />}>
+                <Route index element={<MainPage />} />
+              </Route>
             </Route>
           </Routes>
         </Context>

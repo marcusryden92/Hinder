@@ -1,9 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { ContextProvider } from "../context/context";
-import { Navigate } from "react-router-dom";
-
+import { useAuth } from "../context/AuthenticationContext";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
 
@@ -11,8 +8,7 @@ export default function Header() {
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
 
-  const { user, setUser, handleLogOut } = useContext(AuthenticationProvider);
-  const navigate = useNavigate();
+  const { user, handleLogOut } = useAuth();
 
   return (
     <div

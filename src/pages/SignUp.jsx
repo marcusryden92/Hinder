@@ -5,10 +5,12 @@ import { useRef } from "react";
 import Camera from "../components/Camera";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import { useAuth } from "../context/AuthenticationContext";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const { userImage, saveCurrentUser } = useContext(ContextProvider);
+  const { userImage } = useContext(ContextProvider);
+  const { setUser } = useAuth();
   const name = useRef();
   const description = useRef();
   const password = useRef();
@@ -35,7 +37,7 @@ export default function SignUp() {
         description: description.current.value,
         image: userImage,
       };
-      saveCurrentUser(user);
+      setUser(user);
 
       users.push(user);
       console.log(users.length);

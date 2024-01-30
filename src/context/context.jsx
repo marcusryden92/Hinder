@@ -11,7 +11,7 @@ export const Context = ({ children }) => {
   const { allUsers } = useAuth();
 
   const saveImage = (img) => {
-    const imageSrc = img.curreAnt.getScreenshot();
+    const imageSrc = img.current.getScreenshot();
     setUserImage(imageSrc);
   };
 
@@ -19,7 +19,6 @@ export const Context = ({ children }) => {
     userImage,
     saveImage,
     allUsers,
-    saveUser,
   };
 
   return (
