@@ -12,7 +12,7 @@ export default function App() {
         <Routes>
           <Route index element={<SignIn />} />
           <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/app" element={<Root />}>
+          <Route path="/MainPage" element={<Root />}>
             <Route index element={<MainPage />} />
           </Route>
         </Routes>

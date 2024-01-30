@@ -12,6 +12,7 @@ export default function SignUp() {
   const name = useRef();
   const description = useRef();
   const password = useRef();
+  const username = useRef();
 
   const goToHomePage = () => {
     navigate("/MainPage");
@@ -19,6 +20,7 @@ export default function SignUp() {
 
   const handleRegister = () => {
     if (
+      username.current.value &&
       name.current.value &&
       description.current.value &&
       password.current.value &&
@@ -28,6 +30,7 @@ export default function SignUp() {
 
       const user = {
         name: name.current.value,
+        username: username.current.value,
         password: password.current.value,
         description: description.current.value,
         image: userImage,
@@ -35,6 +38,7 @@ export default function SignUp() {
       saveCurrentUser(user);
 
       users.push(user);
+      console.log(users.length);
       localStorage.setItem("users", JSON.stringify(users));
       goToHomePage();
     }
@@ -53,6 +57,14 @@ export default function SignUp() {
               className="rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
               type="text"
               ref={name}
+            />
+          </div>
+          <div className=" flex flex-col py-2 text-black">
+            <label>Username</label>
+            <input
+              className="rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+              type="text"
+              ref={username}
             />
           </div>
           <div className=" flex flex-col py-2 text-black">

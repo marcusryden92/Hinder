@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import { Navigate } from "react-router-dom";
 
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
@@ -9,6 +10,14 @@ import { MdOutlineExitToApp } from "react-icons/md";
 export default function Header() {
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
+
+  const { user, setUser } = useContext(ContextProvider);
+  const navigate = useNavigate();
+
+  function handleLogOut() {
+    setUser({});
+    navigate("/");
+  }
 
   return (
     <div
@@ -31,8 +40,16 @@ export default function Header() {
       
       `}
     >
-      <div className="header-icon bg-gray-400 font-bold h-8 w-8 rounded-full mx-1">
-        MR
+      <div className="flex gap-2">
+        <div
+          className="header-icon bg-gray-400 font-bold h-8 w-8 rounded-full mx-1"
+          style={{
+            backgroundImage: `url(${user.image})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="pt-1">{user.name}</div>
       </div>
 
       <Link
@@ -69,7 +86,7 @@ export default function Header() {
             {MATCHCOUNT}
           </div>
         </div>
-        <Link to="/LoginPage">
+        <div onClick={handleLogOut}>
           <HeaderIcon
             icon={
               <MdOutlineExitToApp
@@ -78,7 +95,7 @@ export default function Header() {
               />
             }
           />
-        </Link>
+        </div>
       </div>
     </div>
   );
