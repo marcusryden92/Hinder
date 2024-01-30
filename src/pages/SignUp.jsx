@@ -24,13 +24,15 @@ export default function SignUp() {
       password.current.value &&
       userImage
     ) {
-      let users = JSON.parse(localStorage.getItem("users")) || [];
+      let users = [JSON.parse(localStorage.getItem("users")) || []];
+
       const user = {
         name: name.current.value,
         password: password.current.value,
         description: description.current.value,
         image: userImage,
       };
+
       users.push(user);
       localStorage.setItem("users", JSON.stringify(users));
       goToHomePage();
