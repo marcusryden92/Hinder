@@ -25,12 +25,11 @@ export default function Footer() {
 
   return (
     <div
-      className={`absolute bottom-0 w-screen font-serif
+      className={`w-screen font-serif
     align-middle
     text-center
     italic
     text-sm
-    w-screen 
     p-2 h-14
     pt-4 
     shadow-lg
