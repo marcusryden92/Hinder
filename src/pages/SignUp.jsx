@@ -8,7 +8,7 @@ import { ContextProvider } from "../context/context";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const { userImage } = useContext(ContextProvider);
+  const { userImage, saveCurrentUser } = useContext(ContextProvider);
   const name = useRef();
   const description = useRef();
   const password = useRef();
@@ -24,7 +24,7 @@ export default function SignUp() {
       password.current.value &&
       userImage
     ) {
-      let users = [JSON.parse(localStorage.getItem("users")) || []];
+      let users = JSON.parse(localStorage.getItem("users")) || [];
 
       const user = {
         name: name.current.value,
@@ -32,6 +32,7 @@ export default function SignUp() {
         description: description.current.value,
         image: userImage,
       };
+      saveCurrentUser(user);
 
       users.push(user);
       localStorage.setItem("users", JSON.stringify(users));

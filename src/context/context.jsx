@@ -1,21 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ContextProvider = createContext({
   userImage: null,
-  sveImage: () => {},
+  saveImage: () => {},
+  saveCurrentUser: () => {},
 });
 
 export const Context = ({ children }) => {
   const [userImage, setUserImage] = useState(null);
+  const [allUsers, setAllUsers] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const saveImage = (img) => {
-    const imageSrc = img.current.getScreenshot();
-    setUserImage(imageSrc);
+  const saveCurrentUser = (user) => {
+    setUser(user);
   };
+
+  useEffect(() => {
+    const users = JSON.parse(localStorage.getItem("users"));
+    setAllUsers(users);
+  }, [user]);
 
   const value = {
     userImage,
     saveImage,
+    saveCurrentUser,
   };
 
   return (
