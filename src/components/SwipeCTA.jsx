@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function SwipeCTA() {
   const [image, setImage] = useState("https://source.unsplash.com/random");

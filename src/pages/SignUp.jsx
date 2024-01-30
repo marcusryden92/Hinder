@@ -1,28 +1,42 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import loginImg from "../assets/login.jpg";
 import { useRef } from "react";
 import Camera from "../components/Camera";
+import { useContext } from "react";
+import { ContextProvider } from "../context/context";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+  const { userImage, saveCurrentUser } = useContext(ContextProvider);
   const name = useRef();
   const description = useRef();
   const password = useRef();
+
+  const goToHomePage = () => {
+    navigate("/MainPage");
+  };
 
   const handleRegister = () => {
     if (
       name.current.value &&
       description.current.value &&
-      password.current.value
+      password.current.value &&
+      userImage
     ) {
       let users = JSON.parse(localStorage.getItem("users")) || [];
+
       const user = {
         name: name.current.value,
         password: password.current.value,
         description: description.current.value,
+        image: userImage,
       };
+      saveCurrentUser(user);
+
       users.push(user);
       localStorage.setItem("users", JSON.stringify(users));
-      window.location.reload();
+      goToHomePage();
     }
   };
   return (
@@ -65,14 +79,12 @@ export default function SignUp() {
             </p>
             <p>Forgot password</p>
           </div>
-          <Link to={"/MainPage"}>
-            <button
-              onClick={handleRegister}
-              className="hover:bg-pink-400 w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/40 text-white font-semibold rounded-lg"
-            >
-              SIGN UP
-            </button>
-          </Link>
+          <button
+            onClick={handleRegister}
+            className="hover:bg-pink-400 w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/40 text-white font-semibold rounded-lg"
+          >
+            SIGN UP
+          </button>
           <p>
             Already member? <Link to="/SignIn">Click here!</Link>
           </p>
