@@ -4,31 +4,24 @@ import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import { Navigate } from "react-router-dom";
+import {
+  AuthenticationProvider,
+  useAuth,
+} from "../context/AuthenticationContext";
 
 export default function SignIp() {
   const usernameBox = useRef();
   const passwordBox = useRef();
-  const { allUsers, user, setUser } = useContext(ContextProvider);
   const navigate = useNavigate();
+  const { handleLogIn } = useAuth;
 
   const goToHomePage = () => {
     navigate("/MainPage");
   };
 
-  function handleSignIn() {
-    const userFinder = allUsers.find((userObj) => {
-      return userObj.username === usernameBox.current.value;
-    });
-
-    if (userFinder) {
-      if (userFinder.password === passwordBox.current.value) {
-        setUser(userFinder);
-        goToHomePage();
-      } else {
-        console.log("Wrong password");
-      }
-    } else {
-      console.log("No user found");
+  function login() {
+    if (handleLogIn(usernameBox.current.value, passwordBox.current.value)) {
+      goToHomePage();
     }
   }
 
@@ -64,7 +57,7 @@ export default function SignIp() {
             <p>Forgot password</p>
           </div>
           <button
-            onClick={handleSignIn}
+            onClick={login}
             className="w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/30 text-white font-semibold rounded-lg hover:bg-pink-400"
           >
             SIGN IN

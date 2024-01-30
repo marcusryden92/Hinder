@@ -11,13 +11,8 @@ export default function Header() {
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
 
-  const { user, setUser } = useContext(ContextProvider);
+  const { user, setUser, handleLogOut } = useContext(AuthenticationProvider);
   const navigate = useNavigate();
-
-  function handleLogOut() {
-    setUser({});
-    navigate("/");
-  }
 
   return (
     <div
