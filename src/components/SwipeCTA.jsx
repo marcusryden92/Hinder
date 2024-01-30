@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { ContextProvider } from "../context/context";
 
 export default function SwipeCTA() {
   const [image, setImage] = useState("https://source.unsplash.com/random");
   const [animateMatch, setAnimateMatch] = useState(false);
   const [animateMismatch, setanimateMismatch] = useState(false);
+  const { targetUser = {} } = useContext(ContextProvider);
 
   if (animateMatch || animateMismatch) {
     setTimeout(() => {
@@ -57,20 +60,17 @@ export default function SwipeCTA() {
               : ""
           }
     `}
-          src={image}
+          src={targetUser.image}
           alt=""
         ></img>
       </div>
       <div className="flex flex-col flex-colleading-normal flex-1 p-5 justify-center">
         <h5 className=" text-2xl font-bold tracking-tight mb-2 text-gray-900">
-          UserName
+          {targetUser.name}
         </h5>
 
         <div className="mb-3 font-normal rounded-lg text-gray-600 bg-white shadow-twe-inner text-start ">
-          Hey there, I'm Max, a tech enthusiast and artist. By day, I'm all
-          about creating sleek websites, and by night, I'm capturing stories
-          through my lens. I'm passionate about nature, love diving into virtual
-          reality.
+          {targetUser.description}
         </div>
       </div>
     </div>
