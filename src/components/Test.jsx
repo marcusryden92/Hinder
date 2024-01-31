@@ -1,9 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import { useAuth } from "../context/AuthenticationContext";
 
 function Test() {
-  const { allUsers } = useContext(ContextProvider);
+  const { allUsers } = useAuth();
   const { handleCarouselClick } = useContext(ContextProvider);
 
   if (!allUsers) return null;
@@ -16,7 +17,6 @@ function Test() {
           key={index}
         ></img>
       ))}
-      ;
     </div>
   );
 }
