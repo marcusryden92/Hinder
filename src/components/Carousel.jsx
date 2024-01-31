@@ -1,7 +1,18 @@
 import { useContext, useState, useEffect } from "react";
 import { ContextProvider } from "../context/context";
 export default function Carousel() {
-  const { handleImageClick, carouselUsers } = useContext(ContextProvider);
+  const { handleImageClick, carouselUsers, setCarouselUsers, user } =
+    useContext(ContextProvider);
+
+  useEffect(() => {
+    console.log("carouselUsers", carouselUsers);
+  }, [carouselUsers]);
+
+  useEffect(() => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const usersWithoutUser = users.filter((u) => u.username !== user.username);
+    setCarouselUsers(usersWithoutUser);
+  }, []);
 
   return (
     <div className="m-8 relative overflow-auto">

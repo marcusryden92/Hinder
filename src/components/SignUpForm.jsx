@@ -18,14 +18,14 @@ export default function SignUpForm() {
     navigate("/mainpage");
   };
 
-  const checkUsername = (username) => {
-    const takenUsername = allUsers.find((user) => user.username === username);
-    if (takenUsername) {
-      return false;
-    } else {
-      return true;
-    }
-  };
+  //   const checkUsername = (username) => {
+  //     const takenUsername = allUsers.find((user) => user.username === username);
+  //     if (takenUsername) {
+  //       return false;
+  //     } else {
+  //       return true;
+  //     }
+  //   };
 
   const handleRegister = () => {
     if (
@@ -33,8 +33,8 @@ export default function SignUpForm() {
       name.current.value &&
       description.current.value &&
       password.current.value &&
-      userImage &&
-      checkUsername(username.current.value) === true
+      userImage
+      //       checkUsername(username.current.value) === true
     ) {
       let users = JSON.parse(localStorage.getItem("users")) || [];
 

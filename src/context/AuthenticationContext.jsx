@@ -30,6 +30,7 @@ export const AuthenticationProvider = ({ children }) => {
     if (userFound) {
       if (userFound.password === password) {
         setUser(userFound);
+        console.log("userFound", userFound);
         return true;
       } else {
         return false;

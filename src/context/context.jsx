@@ -5,33 +5,29 @@ export const ContextProvider = createContext({
   userImage: null,
   saveImage: () => {},
   allUsers: null,
+  user: null,
   handleImageClick: () => {},
   selectedUser: null,
   setSelectedUser: () => {},
   handleRemoveImage: () => {},
   carouselUsers: [],
+  setCarouselUsers: () => {},
 });
 
 export const Context = ({ children }) => {
   const [userImage, setUserImage] = useState(null);
-  const { allUsers } = useAuth();
+  const { allUsers, user } = useAuth();
   const [selectedUser, setSelectedUser] = useState(null);
   const [carouselUsers, setCarouselUsers] = useState([]);
-
-  useEffect(() => {
-    setCarouselUsers(allUsers);
-  }, [allUsers]);
 
   const handleRemoveImage = (selectedUser) => {
     const newUsers = carouselUsers.filter(
       (user) => user.username !== selectedUser.username
     );
-    setCarouselUsers(newUsers);
     setTimeout(() => {
-      setSelectedUser(
-        carouselUsers[Math.floor(Math.random() * carouselUsers.length)]
-      );
-    }, 600);
+      setSelectedUser(newUsers[Math.floor(Math.random() * newUsers.length)]);
+    }, 200);
+    setCarouselUsers(newUsers);
   };
 
   const handleImageClick = (user) => {
@@ -52,6 +48,8 @@ export const Context = ({ children }) => {
     setSelectedUser,
     handleRemoveImage,
     carouselUsers,
+    setCarouselUsers,
+    user,
   };
 
   return (

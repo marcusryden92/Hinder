@@ -10,7 +10,7 @@ export default function SignInForm() {
   const { handleLogIn } = useAuth();
 
   const goToHomePage = () => {
-    navigate("/MainPage");
+    navigate("/mainpage");
   };
 
   function login() {
