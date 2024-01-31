@@ -1,25 +1,29 @@
 import React from "react";
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
+
 import { ContextProvider } from "../context/context";
 
 export default function SwipeCTA() {
-  const [image, setImage] = useState("https://source.unsplash.com/random");
   const [animateMatch, setAnimateMatch] = useState(false);
-  const [animateMismatch, setanimateMismatch] = useState(false);
-  const { targetUser = {} } = useContext(ContextProvider);
+  const [animateMismatch, setAnimateMismatch] = useState(false);
+  const { selectedUser, setSelectedUser, handleRemoveImage } =
+    useContext(ContextProvider);
+
+  useEffect(() => {
+    console.log(selectedUser);
+  }, [selectedUser]);
 
   if (animateMatch || animateMismatch) {
     setTimeout(() => {
       setAnimateMatch(false);
-      setanimateMismatch(false);
+      setAnimateMismatch(false);
     }, 600);
   }
 
   function renderImage() {
-    fetch(`https://source.unsplash.com/random`).then((response) => {
-      setImage(response.url);
-    });
+    setTimeout(() => {
+      setSelectedUser([]);
+    }, 300);
   }
 
   return (
@@ -29,10 +33,8 @@ export default function SwipeCTA() {
       >
         <button
           onClick={() => {
-            setanimateMismatch(!animateMismatch);
-            setTimeout(() => {
-              renderImage();
-            }, 300);
+            setAnimateMismatch(!animateMismatch);
+            handleRemoveImage(selectedUser);
           }}
           className="text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border border-red-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem]"
         >
@@ -42,9 +44,7 @@ export default function SwipeCTA() {
         <button
           onClick={() => {
             setAnimateMatch(!animateMatch);
-            setTimeout(() => {
-              renderImage();
-            }, 300);
+            handleRemoveImage(selectedUser);
           }}
           className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem]"
         >
@@ -60,17 +60,17 @@ export default function SwipeCTA() {
               : ""
           }
     `}
-          src={targetUser.image}
+          src={selectedUser?.image}
           alt=""
         ></img>
       </div>
       <div className="flex flex-col flex-colleading-normal flex-1 p-5 justify-center">
         <h5 className=" text-2xl font-bold tracking-tight mb-2 text-gray-900">
-          {targetUser.name}
+          {selectedUser?.name}
         </h5>
 
         <div className="mb-3 font-normal rounded-lg text-gray-600 bg-white shadow-twe-inner text-start ">
-          {targetUser.description}
+          {selectedUser?.description}
         </div>
       </div>
     </div>
