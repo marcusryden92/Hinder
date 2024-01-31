@@ -36,23 +36,26 @@ export default function SwipeCTA() {
         >
           <span className="relative z-10 text-[2rem] grid m-auto">✔️</span>
         </button>
-
-        <img
-          className={`object-cover block m-auto w-[100%] h-[100%] rounded-t-lg md:rounded-none md:rounded-s-lg z-[-10] delay-75
-	  ${
+        {selectedUser ? (
+          <img
+            className={`object-cover block m-auto w-[100%] h-[100%] rounded-t-lg md:rounded-none md:rounded-s-lg z-[-10] delay-75
+    ${
       animation === "liked"
         ? "transition-translate duration-200  translate-x-[100%]"
         : ""
     }
-      	  ${
-            animation == "disliked"
-              ? "transition-translate duration-200  translate-x-[-100%]"
-              : ""
-          }
-    `}
-          src={selectedUser?.image}
-          alt=""
-        ></img>
+    ${
+      animation == "disliked"
+        ? "transition-translate duration-200  translate-x-[-100%]"
+        : ""
+    }
+  `}
+            src={selectedUser.image}
+            alt=""
+          />
+        ) : (
+          <div>NO USERS TO SWIPE ON!</div>
+        )}
       </div>
       <div className="flex flex-col flex-colleading-normal flex-1 p-5 justify-center">
         <h5 className=" text-2xl font-bold tracking-tight mb-2 text-gray-900">
