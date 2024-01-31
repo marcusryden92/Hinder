@@ -1,11 +1,12 @@
-import { createContext, useState, useEffect, useContext } from "react";
-import { AuthenticationProvider } from "./AuthenticationContext";
+import { createContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthenticationContext";
+
 export const ContextProvider = createContext({
   userImage: null,
   saveImage: () => {},
+  allUsers: null,
   handleImageClick: () => {},
-  selectedUser: [],
+  selectedUser: null,
   setSelectedUser: () => {},
   handleRemoveImage: () => {},
   carouselUsers: [],
@@ -26,6 +27,11 @@ export const Context = ({ children }) => {
       (user) => user.username !== selectedUser.username
     );
     setCarouselUsers(newUsers);
+    setTimeout(() => {
+      setSelectedUser(
+        carouselUsers[Math.floor(Math.random() * carouselUsers.length)]
+      );
+    }, 600);
   };
 
   const handleImageClick = (user) => {

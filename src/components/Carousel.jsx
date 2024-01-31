@@ -11,7 +11,7 @@ export default function Carousel() {
             return (
               <div
                 key={index}
-                className={`w-56 h-76 m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer`}
+                className={`w-56 h-76 m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer `}
                 onClick={() => {
                   handleImageClick(user);
                 }}

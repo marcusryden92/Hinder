@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import { useAuth } from "../context/AuthenticationContext";
 
 export default function SignUpForm() {
   const navigate = useNavigate();
-  const { userImage } = useContext(ContextProvider);
+  const { userImage, allUsers } = useContext(ContextProvider);
   const { setUser } = useAuth();
   const name = useRef();
   const description = useRef();
@@ -15,7 +15,16 @@ export default function SignUpForm() {
   const username = useRef();
 
   const goToHomePage = () => {
-    navigate("/MainPage");
+    navigate("/mainpage");
+  };
+
+  const checkUsername = (username) => {
+    const takenUsername = allUsers.find((user) => user.username === username);
+    if (takenUsername) {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   const handleRegister = () => {
@@ -24,7 +33,8 @@ export default function SignUpForm() {
       name.current.value &&
       description.current.value &&
       password.current.value &&
-      userImage
+      userImage &&
+      checkUsername(username.current.value) === true
     ) {
       let users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -36,9 +46,7 @@ export default function SignUpForm() {
         image: userImage,
       };
       setUser(user);
-
       users.push(user);
-      console.log(users.length);
       localStorage.setItem("users", JSON.stringify(users));
       goToHomePage();
     }
@@ -93,7 +101,7 @@ export default function SignUpForm() {
         SIGN UP
       </button>
       <p>
-        Already member? <Link to="/SignIn">Click here!</Link>
+        Already member? <Link to="/signin">Click here!</Link>
       </p>
     </form>
   );

@@ -58,7 +58,7 @@ export default function SignInForm() {
           </button>
           <p>
             No member?{" "}
-            <Link to="/SignUp" className=" font-bold">
+            <Link to="/signup" className=" font-bold">
               Register!
             </Link>
           </p>
