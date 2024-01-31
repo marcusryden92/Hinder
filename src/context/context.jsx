@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthenticationContext";
+import { setItem } from "localforage";
 
 export const ContextProvider = createContext({
   userImage: null,
@@ -12,6 +13,7 @@ export const ContextProvider = createContext({
   handleRemoveImage: () => {},
   carouselUsers: [],
   setCarouselUsers: () => {},
+  handleMatch: () => {},
 });
 
 export const Context = ({ children }) => {
@@ -38,6 +40,41 @@ export const Context = ({ children }) => {
     const imageSrc = img.current.getScreenshot();
     setUserImage(imageSrc);
   };
+  const handleMatch = (selectedUser) => {
+    const newLike = {
+      swiper: user.username,
+      like: selectedUser.username,
+    };
+
+    const matches = JSON.parse(localStorage.getItem("matches")) || [];
+
+    if (
+      !matches.some(
+        (match) =>
+          match.swiper === newLike.swiper && match.like === newLike.like
+      )
+    ) {
+      matches.push(newLike);
+    }
+
+    localStorage.setItem("matches", JSON.stringify(matches));
+
+    const mutualMatches = matches
+      .filter((match1) =>
+        matches.some(
+          (match2) =>
+            match1.swiper === match2.like && match1.like === match2.swiper
+        )
+      )
+      .map((match) => ({
+        user1: match.swiper,
+        user2: match.like,
+      }));
+
+    console.log(mutualMatches);
+
+    localStorage.setItem("matches", JSON.stringify(matches));
+  };
 
   const value = {
     userImage,
@@ -50,6 +87,7 @@ export const Context = ({ children }) => {
     carouselUsers,
     setCarouselUsers,
     user,
+    handleMatch,
   };
 
   return (

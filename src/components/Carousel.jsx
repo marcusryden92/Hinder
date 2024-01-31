@@ -5,10 +5,6 @@ export default function Carousel() {
     useContext(ContextProvider);
 
   useEffect(() => {
-    console.log("carouselUsers", carouselUsers);
-  }, [carouselUsers]);
-
-  useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const usersWithoutUser = users.filter((u) => u.username !== user.username);
     setCarouselUsers(usersWithoutUser);
