@@ -44,6 +44,7 @@ export default function SignUpForm() {
         password: password.current.value,
         description: description.current.value,
         image: userImage,
+        likes: [],
       };
       setUser(user);
       users.push(user);

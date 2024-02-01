@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthenticationContext";
 import { setItem } from "localforage";
+import { Users } from "lucide-react";
 
 export const ContextProvider = createContext({
   userImage: null,
@@ -13,7 +14,8 @@ export const ContextProvider = createContext({
   handleRemoveImage: () => {},
   carouselUsers: [],
   setCarouselUsers: () => {},
-  handleMatch: () => {},
+  handleLike: () => {},
+  personalLikes: [],
 });
 
 export const Context = ({ children }) => {
@@ -21,6 +23,8 @@ export const Context = ({ children }) => {
   const { allUsers, user } = useAuth();
   const [selectedUser, setSelectedUser] = useState(null);
   const [carouselUsers, setCarouselUsers] = useState([]);
+
+  let [personalLikes, setPersonalLikes] = useState([]);
 
   const handleRemoveImage = (selectedUser) => {
     const newUsers = carouselUsers.filter(
@@ -40,40 +44,30 @@ export const Context = ({ children }) => {
     const imageSrc = img.current.getScreenshot();
     setUserImage(imageSrc);
   };
-  const handleMatch = (selectedUser) => {
+
+  const handleLike = (selectedUser) => {
+    // Retrieve data from local storage
+    const matches = JSON.parse(localStorage.getItem("matches")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Create a new match
     const newLike = {
       swiper: user.username,
       like: selectedUser.username,
     };
+    matches.push(newLike);
 
-    const matches = JSON.parse(localStorage.getItem("matches")) || [];
-
-    if (
-      !matches.some(
-        (match) =>
-          match.swiper === newLike.swiper && match.like === newLike.like
-      )
-    ) {
-      matches.push(newLike);
+    // Find the current user in the users arra
+    const newUserLike = selectedUser;
+    let foundUserIndex = users.findIndex((u) => u.username === user.username);
+    if (foundUserIndex) {
+      users[foundUserIndex].likes.push(newUserLike);
     }
 
-    localStorage.setItem("matches", JSON.stringify(matches));
-
-    const mutualMatches = matches
-      .filter((match1) =>
-        matches.some(
-          (match2) =>
-            match1.swiper === match2.like && match1.like === match2.swiper
-        )
-      )
-      .map((match) => ({
-        user1: match.swiper,
-        user2: match.like,
-      }));
-
-    console.log(mutualMatches);
+    setPersonalLikes(users[foundUserIndex].likes);
 
     localStorage.setItem("matches", JSON.stringify(matches));
+    localStorage.setItem("users", JSON.stringify(users));
   };
 
   const value = {
@@ -87,7 +81,8 @@ export const Context = ({ children }) => {
     carouselUsers,
     setCarouselUsers,
     user,
-    handleMatch,
+    handleLike,
+    personalLikes,
   };
 
   return (
