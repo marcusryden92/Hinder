@@ -7,6 +7,8 @@ export default function Carousel() {
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const usersWithoutUser = users.filter((u) => u.username !== user.username);
+    //const allPeopleWoShouldBeInCarousel = usersWithoutUser.filter((u) => u.username !== likeDislikePeople.username)
+    //     likedDislikedPeople.forEach((person) => {usersWithoutUser.filter((u) => u.username !== person.username)});
     setCarouselUsers(usersWithoutUser);
   }, []);
 

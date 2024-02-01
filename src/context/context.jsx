@@ -14,7 +14,6 @@ export const ContextProvider = createContext({
   handleRemoveImage: () => {},
   carouselUsers: [],
   setCarouselUsers: () => {},
-  handleLike: () => {},
   personalLikes: [],
 });
 
@@ -45,31 +44,6 @@ export const Context = ({ children }) => {
     setUserImage(imageSrc);
   };
 
-  const handleLike = (selectedUser) => {
-    // Retrieve data from local storage
-    const matches = JSON.parse(localStorage.getItem("matches")) || [];
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Create a new match
-    const newLike = {
-      swiper: user.username,
-      like: selectedUser.username,
-    };
-    matches.push(newLike);
-
-    // Find the current user in the users arra
-    const newUserLike = selectedUser;
-    let foundUserIndex = users.findIndex((u) => u.username === user.username);
-    if (foundUserIndex) {
-      users[foundUserIndex].likes.push(newUserLike);
-    }
-
-    setPersonalLikes(users[foundUserIndex].likes);
-
-    localStorage.setItem("matches", JSON.stringify(matches));
-    localStorage.setItem("users", JSON.stringify(users));
-  };
-
   const value = {
     userImage,
     saveImage,
@@ -81,7 +55,6 @@ export const Context = ({ children }) => {
     carouselUsers,
     setCarouselUsers,
     user,
-    handleLike,
     personalLikes,
   };
 
