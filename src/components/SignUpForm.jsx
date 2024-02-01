@@ -6,10 +6,8 @@ import useNavigateTo from "../hooks/useNavigateTo";
 
 export default function SignUpForm() {
   const { setNewUser } = useContext(ContextProvider);
-
   const { userImage } = useContext(ContextProvider);
   const { goTo } = useNavigateTo();
-
   const name = useRef();
   const description = useRef();
   const password = useRef();
@@ -54,7 +52,7 @@ export default function SignUpForm() {
     <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center">
       <h2 className="text-4xl dark:text-black mb-6 font-bold">REGISTER</h2>
       <div className=" flex flex-col py-2 text-black">
-        <label> Name</label>
+        <label>Name</label>
         <input
           className="rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
           type="text"

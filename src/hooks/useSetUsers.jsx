@@ -8,13 +8,13 @@ export default function useSetAllUsers() {
     setLoggedInUser(user);
     setAllUsers((prev) => [...prev, user]);
 
-    const users = JSON.parse(localStorage.getItem("users"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
     users.push(user);
     localStorage.setItem("users", JSON.stringify(users));
   };
 
   useEffect(() => {
-    const users = JSON.parse(localStorage.getItem("users"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
     if (users) {
       setAllUsers(users);
     }

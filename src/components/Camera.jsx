@@ -25,14 +25,7 @@ export default function Camera() {
         </button>
       </div>
       <div className="flex flex-col-reverse ">
-        {
-          /*userInfo.map((user, index) => (
-          <div key={index}>
-            <p>{user.userName}</p>
-            <img src={user.image} className="w-20 h-20" alt="" />
-          </div>
-        ))*/ <img className="rounded-[1rem] w-48 " src={userImage} />
-        }
+        <img className="rounded-[1rem] w-48 " src={userImage} />
       </div>
     </div>
   );

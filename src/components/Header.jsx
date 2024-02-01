@@ -1,6 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthenticationContext";
+import { Link } from "react-router-dom";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
 import { useContext } from "react";
@@ -10,8 +9,7 @@ export default function Header() {
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
 
-  const { loggedInUser } = useContext(ContextProvider);
-  const { handleLogOut } = useAuth();
+  const { loggedInUser, handleLogOut } = useContext(ContextProvider);
 
   return (
     <div
@@ -38,7 +36,7 @@ export default function Header() {
         <div
           className="header-icon bg-gray-400 font-bold h-8 w-8 rounded-full mx-1"
           style={{
-            backgroundImage: `url(${loggedInUser.image})`,
+            backgroundImage: `url(${loggedInUser?.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

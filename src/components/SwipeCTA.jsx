@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { ContextProvider } from "../context/context";
 
 export default function SwipeCTA() {
   const [animation, setAnimation] = useState("");
-  const { selectedUser, handleRemoveImage, handleLike } =
+  const { activeUser, removeCarouselImage, setActiveUser, carouselImages } =
     useContext(ContextProvider);
 
   const handleAnimate = (state) => {
@@ -13,6 +13,15 @@ export default function SwipeCTA() {
     }, 600);
   };
 
+  useEffect(() => {
+    const setRandomImage = () => {
+      const randomImage =
+        carouselImages[Math.floor(Math.random() * carouselImages.length)];
+      setActiveUser(randomImage);
+    };
+    setRandomImage();
+  }, [carouselImages]);
+
   return (
     <div className="ml-auto mr-auto w-[95vw] h-[80vh] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 max-w-[60rem] max-h-[37rem] rounded-lg shadow-xl p-5">
       <div
@@ -21,7 +30,7 @@ export default function SwipeCTA() {
         <button
           onClick={() => {
             handleAnimate("disliked");
-            handleRemoveImage(selectedUser);
+            removeCarouselImage(activeUser);
           }}
           className="text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border border-red-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem]"
         >
@@ -31,14 +40,13 @@ export default function SwipeCTA() {
         <button
           onClick={() => {
             handleAnimate("liked");
-            handleRemoveImage(selectedUser);
-            handleLike(selectedUser);
+            removeCarouselImage(activeUser);
           }}
           className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem]"
         >
           <span className="relative z-10 text-[2rem] grid m-auto">✔️</span>
         </button>
-        {selectedUser ? (
+        {activeUser ? (
           <img
             className={`object-cover block m-auto w-[100%] h-[100%] rounded-t-lg md:rounded-none md:rounded-s-lg z-[-10] delay-75
     ${
@@ -52,7 +60,7 @@ export default function SwipeCTA() {
         : ""
     }
   `}
-            src={selectedUser.image}
+            src={activeUser.image}
             alt=""
           />
         ) : (
@@ -61,11 +69,11 @@ export default function SwipeCTA() {
       </div>
       <div className="flex flex-col flex-colleading-normal flex-1 p-5 justify-center">
         <h5 className=" text-2xl font-bold tracking-tight mb-2 text-gray-900">
-          {selectedUser?.name}
+          {activeUser?.name}
         </h5>
 
         <div className="mb-3 font-normal rounded-lg text-gray-600 bg-white shadow-twe-inner text-start ">
-          {selectedUser?.description}
+          {activeUser?.description}
         </div>
       </div>
     </div>

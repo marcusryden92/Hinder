@@ -1,23 +1,31 @@
 import loginImg from "../assets/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import { useAuth } from "../context/AuthenticationContext";
-import useSetUsers from "../hooks/useSetUsers";
+import { useContext } from "react";
+import { ContextProvider } from "../context/context";
 
 export default function SignInForm() {
-  const { setupTestUsers } = useSetUsers();
+  const { setupTestUsers, setLoggedInUser } = useContext(ContextProvider);
   const usernameBox = useRef();
   const passwordBox = useRef();
   const navigate = useNavigate();
-  const { handleLogIn } = useAuth();
 
-  const goToHomePage = () => {
-    navigate("/mainpage");
-  };
+  function handleLogIn(username, password) {
+    const users = JSON.parse(localStorage.getItem("users"));
+    const newUser = users.find((u) => {
+      return u.username === username;
+    });
 
-  function login() {
-    if (handleLogIn(usernameBox.current.value, passwordBox.current.value)) {
-      goToHomePage();
+    if (newUser) {
+      if (newUser.password === password) {
+        setLoggedInUser(newUser);
+        navigate("/mainpage");
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      console.log("No user found");
     }
   }
 
@@ -60,7 +68,9 @@ export default function SignInForm() {
             <p>Forgot password</p>
           </div>
           <button
-            onClick={login}
+            onClick={() =>
+              handleLogIn(usernameBox.current.value, passwordBox.current.value)
+            }
             className="w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/30 text-white font-semibold rounded-lg hover:bg-pink-400"
           >
             SIGN IN
