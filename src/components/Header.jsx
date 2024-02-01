@@ -15,7 +15,7 @@ export default function Header() {
       className={`
       sticky
       top-0
-      z-100
+      z-50	
       flex 
       flex-row
       flex-end
@@ -44,7 +44,7 @@ export default function Header() {
       </div>
 
       <Link
-        to="/MainPage"
+        to="/mainpage"
         className="flex flex-row font-bold ml-32 hover:scale-105 transition ease-in-out duration-500"
       >
         <div className="text-2xl text-white py-0 px-1">Hi</div>
@@ -55,7 +55,7 @@ export default function Header() {
 
       <div className="self-end flex flex-row">
         <div className=" header-icon text-2xl flex justify-center items-end w-20 mr-2">
-          <Link to="/Matches">
+          <Link to="/matches">
             <HeaderIcon
               icon={
                 <HiMiniHeart
