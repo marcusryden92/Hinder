@@ -3,20 +3,33 @@ import { createContext, useState, useEffect } from "react";
 import useSetUsers from "../hooks/useSetUsers";
 
 export const ContextProvider = createContext({
-  userImage: null,
-  saveImage: () => {},
-  allUsers: null,
+  allUsers: [],
+  setAllUsers: () => {},
   loggedInUser: null,
-  handleImageClick: () => {},
+  setLoggedInUser: () => {},
+  setNewUser: () => {},
+  setupTestUsers: () => {},
+  userImage: null,
+  setUserImage: () => {},
   selectedUser: null,
   setSelectedUser: () => {},
-  handleRemoveImage: () => {},
+  handleImageClick: () => {},
+  saveImage: () => {},
   carouselUsers: [],
   setCarouselUsers: () => {},
+  handleRemoveImage: () => {},
 });
 
 export const Context = ({ children }) => {
-  const { allUsers, loggedInUser } = useSetUsers();
+  const {
+    allUsers,
+    setAllUsers,
+    loggedInUser,
+    setLoggedInUser,
+    setNewUser,
+    setupTestUsers,
+  } = useSetUsers();
+
   const [userImage, setUserImage] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [carouselUsers, setCarouselUsers] = useState([]);
@@ -41,16 +54,21 @@ export const Context = ({ children }) => {
   };
 
   const value = {
-    userImage,
-    saveImage,
     allUsers,
-    handleImageClick,
+    setAllUsers,
+    loggedInUser,
+    setLoggedInUser,
+    setNewUser,
+    setupTestUsers,
+    userImage,
+    setUserImage,
     selectedUser,
     setSelectedUser,
-    handleRemoveImage,
+    handleImageClick,
+    saveImage,
     carouselUsers,
     setCarouselUsers,
-    loggedInUser,
+    handleRemoveImage,
   };
 
   return (

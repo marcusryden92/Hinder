@@ -4,6 +4,10 @@ export default function Carousel() {
   const { handleImageClick, carouselUsers, setCarouselUsers, loggedInUser } =
     useContext(ContextProvider);
 
+  if (!loggedInUser) {
+    return null;
+  }
+
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const usersWithoutUser = users.filter(

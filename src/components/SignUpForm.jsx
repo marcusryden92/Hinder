@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useNavigateTo from "../hooks/useNavigateTo";
-import useSetUsers from "../hooks/useSetUsers";
 
 export default function SignUpForm() {
-  const { setNewUser, setAllUsers, setLoggedInUser } = useSetUsers();
+  const { setNewUser } = useContext(ContextProvider);
+
   const { userImage } = useContext(ContextProvider);
   const { goTo } = useNavigateTo();
 
@@ -19,7 +19,7 @@ export default function SignUpForm() {
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     const usernameIsTaken = users.find(
-      (user) => user.username === username.current.value
+      (user) => user?.username === username.current.value
     );
 
     if (
@@ -38,9 +38,16 @@ export default function SignUpForm() {
   };
 
   const handleRegister = () => {
-    const newUser = "hey";
+    const newUser = {
+      name: name.current.value,
+      username: username.current.value,
+      password: password.current.value,
+      description: description.current.value,
+      image: userImage,
+      likes: [],
+    };
 
-    setLoggedInUser(newUser);
+    setNewUser(newUser);
   };
 
   return (
