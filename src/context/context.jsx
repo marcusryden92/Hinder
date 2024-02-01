@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-import useSetAllUsers from "../hooks/useSetAllUsers";
+import useSetUsers from "../hooks/useSetUsers";
 
 export const ContextProvider = createContext({
   userImage: null,
@@ -16,7 +16,7 @@ export const ContextProvider = createContext({
 });
 
 export const Context = ({ children }) => {
-  const { allUsers, loggedInUser } = useSetAllUsers();
+  const { allUsers, loggedInUser } = useSetUsers();
   const [userImage, setUserImage] = useState(null);
   const [selectedUser, setSelectedUser] = useState(null);
   const [carouselUsers, setCarouselUsers] = useState([]);

@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useNavigateTo from "../hooks/useNavigateTo";
-import useSetAllUsers from "../hooks/useSetAllUsers";
+import useSetUsers from "../hooks/useSetUsers";
 
 export default function SignUpForm() {
-  const { setNewUser } = useSetAllUsers();
+  const { setNewUser, setAllUsers, setLoggedInUser } = useSetUsers();
   const { userImage } = useContext(ContextProvider);
   const { goTo } = useNavigateTo();
 
@@ -38,15 +38,9 @@ export default function SignUpForm() {
   };
 
   const handleRegister = () => {
-    const newUser = {
-      name: name.current.value,
-      username: username.current.value,
-      password: password.current.value,
-      description: description.current.value,
-      image: userImage,
-      likes: [],
-    };
-    setNewUser(newUser);
+    const newUser = "hey";
+
+    setLoggedInUser(newUser);
   };
 
   return (

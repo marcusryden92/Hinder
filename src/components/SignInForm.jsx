@@ -2,10 +2,10 @@ import loginImg from "../assets/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useAuth } from "../context/AuthenticationContext";
-import useSetAllUsers from "../hooks/useSetAllUsers";
+import useSetUsers from "../hooks/useSetUsers";
 
 export default function SignInForm() {
-  const { setupTestUsers } = useSetAllUsers();
+  const { setupTestUsers } = useSetUsers();
   const usernameBox = useRef();
   const passwordBox = useRef();
   const navigate = useNavigate();

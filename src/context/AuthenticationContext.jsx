@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import useSetAllUsers from "../hooks/useSetAllUsers";
+import useSetUsers from "../hooks/useSetUsers";
 import useNavigateTo from "../hooks/useNavigateTo";
 
 export const AuthenticationContext = createContext({
@@ -9,7 +9,7 @@ export const AuthenticationContext = createContext({
 });
 
 export const AuthenticationProvider = ({ children }) => {
-  const { allUsers, setNewUser, setAllUsers } = useSetAllUsers();
+  const { allUsers, setNewUser, setAllUsers } = useSetUsers();
   const { goTo } = useNavigateTo();
 
   function handleLogIn(username, password) {

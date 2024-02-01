@@ -9,8 +9,7 @@ export default function Carousel() {
     const usersWithoutUser = users.filter(
       (u) => u.username !== loggedInUser.username
     );
-    //const allPeopleWoShouldBeInCarousel = usersWithoutUser.filter((u) => u.username !== likeDislikePeople.username)
-    //     likedDislikedPeople.forEach((person) => {usersWithoutUser.filter((u) => u.username !== person.username)});
+
     setCarouselUsers(usersWithoutUser);
   }, []);
 

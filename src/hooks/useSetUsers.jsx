@@ -2,11 +2,14 @@ import { useState, useEffect } from "react";
 
 export default function useSetAllUsers() {
   const [allUsers, setAllUsers] = useState(null);
-  const [loggedInUser, setLoggedInUser] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    console.log("loggedInUser", loggedInUser);
+  }, [loggedInUser]);
 
   const setNewUser = (user) => {
-    setAllUsers((prev) => [...prev, user]);
-    setLoggedInUser(user);
+    //     setLoggedInUser(user.name);
 
     const users = JSON.parse(localStorage.getItem("users"));
     users.push(user);
