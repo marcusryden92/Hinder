@@ -23,7 +23,7 @@ export const Context = ({ children }) => {
     useSetCarousel();
 
   const handleLogOut = () => {
-    setNewUser(null);
+    setLoggedInUser(null);
     goTo("/");
   };
 
