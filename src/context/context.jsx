@@ -16,8 +16,10 @@ export const Context = ({ children }) => {
     setNewUser,
     setupTestUsers,
   } = useSetUsers();
-  const { userImage, saveImage } = useUseCamera();
+
   const { goTo } = useNavigateTo();
+
+  const { userImage, saveImage } = useUseCamera();
   const [activeUser, setActiveUser] = useState(null);
   const { carouselImages, setCarouselImages, removeCarouselImage } =
     useSetCarousel();

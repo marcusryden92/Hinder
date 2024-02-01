@@ -1,4 +1,4 @@
-import { useAuth } from "../context/context";
+import { useAuth } from "./context";
 import { Outlet, Navigate } from "react-router";
 
 const PrivateRoutes = ({ children }) => {

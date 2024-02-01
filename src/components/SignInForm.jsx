@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import useFindUser from "../hooks/useFindUser";
 
 export default function SignInForm() {
   const { setupTestUsers, setLoggedInUser } = useContext(ContextProvider);
@@ -11,19 +12,12 @@ export default function SignInForm() {
   const navigate = useNavigate();
 
   function handleLogIn(username, password) {
-    const users = JSON.parse(localStorage.getItem("users"));
-    const newUser = users.find((u) => {
-      return u.username === username;
-    });
+    const newUser = useFindUser(username);
 
-    if (newUser) {
-      if (newUser.password === password) {
-        setLoggedInUser(newUser);
-        navigate("/mainpage");
-        return true;
-      } else {
-        return false;
-      }
+    if (newUser && newUser.password === password) {
+      setLoggedInUser(newUser);
+      navigate("/mainpage");
+      return true;
     } else {
       console.log("No user found");
     }

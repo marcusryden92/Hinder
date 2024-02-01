@@ -5,7 +5,7 @@ import Matches from "./pages/Matches";
 import Root from "./pages/Root";
 import { Context } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PrivateRoutes from "./components/PrivateRoutes";
+import PrivateRoutes from "./context/PrivateRoutes";
 
 export default function App() {
   return (

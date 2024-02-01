@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import { useRef, useContext } from "react";
 import Webcam from "react-webcam";
-import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 
 export default function Camera() {
