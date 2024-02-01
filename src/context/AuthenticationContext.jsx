@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 
-const AuthenticationContext = createContext({
+export const AuthenticationContext = createContext({
   user: null,
   setUser: () => {},
   allUsers: null,
@@ -14,6 +14,10 @@ export const AuthenticationProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(allUsers);
+  }, [allUsers]);
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users"));

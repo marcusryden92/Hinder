@@ -5,7 +5,8 @@ import { Outlet, Navigate } from "react-router";
 const PrivateRoutes = ({ children }) => {
   const { user } = useAuth();
 
-  return user ? <Outlet /> : <Navigate to="/" />;
+  //   return user ? <Outlet /> : <Navigate to="/" />;
+  return <Outlet />;
 };
 
 export default PrivateRoutes;
