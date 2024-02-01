@@ -1,29 +1,25 @@
 import { createContext, useState, useEffect } from "react";
-import { useAuth } from "./AuthenticationContext";
-import { setItem } from "localforage";
-import { Users } from "lucide-react";
+
+import useSetAllUsers from "../hooks/useSetAllUsers";
 
 export const ContextProvider = createContext({
   userImage: null,
   saveImage: () => {},
   allUsers: null,
-  user: null,
+  loggedInUser: null,
   handleImageClick: () => {},
   selectedUser: null,
   setSelectedUser: () => {},
   handleRemoveImage: () => {},
   carouselUsers: [],
   setCarouselUsers: () => {},
-  personalLikes: [],
 });
 
 export const Context = ({ children }) => {
+  const { allUsers, loggedInUser } = useSetAllUsers();
   const [userImage, setUserImage] = useState(null);
-  const { allUsers, user } = useAuth();
   const [selectedUser, setSelectedUser] = useState(null);
   const [carouselUsers, setCarouselUsers] = useState([]);
-
-  let [personalLikes, setPersonalLikes] = useState([]);
 
   const handleRemoveImage = (selectedUser) => {
     const newUsers = carouselUsers.filter(
@@ -54,8 +50,7 @@ export const Context = ({ children }) => {
     handleRemoveImage,
     carouselUsers,
     setCarouselUsers,
-    user,
-    personalLikes,
+    loggedInUser,
   };
 
   return (

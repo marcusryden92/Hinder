@@ -1,12 +1,14 @@
 import { useContext, useState, useEffect } from "react";
 import { ContextProvider } from "../context/context";
 export default function Carousel() {
-  const { handleImageClick, carouselUsers, setCarouselUsers, user } =
+  const { handleImageClick, carouselUsers, setCarouselUsers, loggedInUser } =
     useContext(ContextProvider);
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const usersWithoutUser = users.filter((u) => u.username !== user.username);
+    const usersWithoutUser = users.filter(
+      (u) => u.username !== loggedInUser.username
+    );
     //const allPeopleWoShouldBeInCarousel = usersWithoutUser.filter((u) => u.username !== likeDislikePeople.username)
     //     likedDislikedPeople.forEach((person) => {usersWithoutUser.filter((u) => u.username !== person.username)});
     setCarouselUsers(usersWithoutUser);

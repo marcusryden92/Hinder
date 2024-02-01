@@ -2,11 +2,10 @@ import loginImg from "../assets/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { useAuth } from "../context/AuthenticationContext";
-import { useContext } from "react";
-import { AuthenticationContext } from "../context/AuthenticationContext";
+import useSetAllUsers from "../hooks/useSetAllUsers";
 
 export default function SignInForm() {
-  const { setAllUsers } = useContext(AuthenticationContext);
+  const { setupTestUsers } = useSetAllUsers();
   const usernameBox = useRef();
   const passwordBox = useRef();
   const navigate = useNavigate();
@@ -22,48 +21,6 @@ export default function SignInForm() {
     }
   }
 
-  function setupTestUsers() {
-    const testUsers = [
-      {
-        name: "ben",
-        username: "ben",
-        password: 1,
-        description:
-          "When I was a teen, there was a popular hit song by Johnny Lee called “Looking for Love in All the Wrong Places.” The song spoke to the hope and the challenge of finding love—a message that still rings true.",
-        image: "https://source.unsplash.com/random",
-        likes: [],
-      },
-      {
-        name: "moa",
-        username: "moa",
-        password: 1,
-        description:
-          "When I was a teen, there was a popular hit song by Johnny Lee called “Looking for Love in All the Wrong Places.” The song spoke to the hope and the challenge of finding love—a message that still rings true.",
-        image: "https://source.unsplash.com/random",
-        likes: [],
-      },
-      {
-        name: "peter",
-        username: "peter",
-        password: 1,
-        description:
-          "When I was a teen, there was a popular hit song by Johnny Lee called “Looking for Love in All the Wrong Places.” The song spoke to the hope and the challenge of finding love—a message that still rings true.",
-        image: "https://source.unsplash.com/random",
-        likes: [],
-      },
-      {
-        name: "sara",
-        username: "sara",
-        password: 1,
-        description:
-          "When I was a teen, there was a popular hit song by Johnny Lee called “Looking for Love in All the Wrong Places.” The song spoke to the hope and the challenge of finding love—a message that still rings true.",
-        image: "https://source.unsplash.com/random",
-        likes: [],
-      },
-    ];
-    setAllUsers(testUsers);
-    localStorage.setItem("users", JSON.stringify(testUsers));
-  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
       <div className="hidden sm:block">
@@ -71,7 +28,7 @@ export default function SignInForm() {
       </div>
       <div className=" bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center">
         <button
-          onClick={() => setupTestUsers()}
+          onClick={setupTestUsers}
           className=" absolute top-0 p-2 bg-red-500 w-[10rem] rounded-lg active:bg-red-900 active:text-white"
         >
           press for users

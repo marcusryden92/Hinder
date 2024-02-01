@@ -1,57 +1,54 @@
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
-import { useAuth } from "../context/AuthenticationContext";
+import useNavigateTo from "../hooks/useNavigateTo";
+import useSetAllUsers from "../hooks/useSetAllUsers";
 
 export default function SignUpForm() {
-  const navigate = useNavigate();
-  const { userImage, allUsers } = useContext(ContextProvider);
-  const { setUser } = useAuth();
+  const { setNewUser } = useSetAllUsers();
+  const { userImage } = useContext(ContextProvider);
+  const { goTo } = useNavigateTo();
+
   const name = useRef();
   const description = useRef();
   const password = useRef();
   const username = useRef();
 
-  const goToHomePage = () => {
-    navigate("/mainpage");
-  };
+  const validateRegistration = () => {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-  const checkUsername = (username) => {
-    const takenUsername = allUsers.find((user) => user.username === username);
-    if (takenUsername) {
-      return false;
+    const usernameIsTaken = users.find(
+      (user) => user.username === username.current.value
+    );
+
+    if (
+      username.current.value &&
+      name.current.value &&
+      description.current.value &&
+      password.current.value &&
+      userImage &&
+      !usernameIsTaken
+    ) {
+      handleRegister();
+      goTo("/mainpage");
     } else {
-      return true;
+      alert("Please fill in all fields or make sure the username isn't taken");
     }
   };
 
   const handleRegister = () => {
-    if (
-      (username.current.value &&
-        name.current.value &&
-        description.current.value &&
-        password.current.value &&
-        userImage,
-      checkUsername(username.current.value) === true)
-    ) {
-      let users = JSON.parse(localStorage.getItem("users")) || [];
-
-      const user = {
-        name: name.current.value,
-        username: username.current.value,
-        password: password.current.value,
-        description: description.current.value,
-        image: userImage,
-        likes: [],
-      };
-      setUser(user);
-      users.push(user);
-      localStorage.setItem("users", JSON.stringify(users));
-      goToHomePage();
-    }
+    const newUser = {
+      name: name.current.value,
+      username: username.current.value,
+      password: password.current.value,
+      description: description.current.value,
+      image: userImage,
+      likes: [],
+    };
+    setNewUser(newUser);
   };
+
   return (
     <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center">
       <h2 className="text-4xl dark:text-black mb-6 font-bold">REGISTER</h2>
@@ -96,7 +93,10 @@ export default function SignUpForm() {
         <p>Forgot password</p>
       </div>
       <button
-        onClick={handleRegister}
+        onClick={(e) => {
+          e.preventDefault();
+          validateRegistration();
+        }}
         className="hover:bg-pink-400 w-full my-5 py-2 bg-pink-500 shadow-lg shadow-pink-500/50 hover:shadow-pink-500/40 text-white font-semibold rounded-lg"
       >
         SIGN UP
