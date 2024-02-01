@@ -101,7 +101,7 @@ export default function SignUpForm() {
         SIGN UP
       </button>
       <p>
-        Already member? <Link to="/signin">Click here!</Link>
+        Already member? <Link to="/">Click here!</Link>
       </p>
     </form>
   );

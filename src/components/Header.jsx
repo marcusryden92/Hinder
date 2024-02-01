@@ -48,8 +48,9 @@ export default function Header() {
         className="flex flex-row font-bold ml-32 hover:scale-105 transition ease-in-out duration-500"
       >
         <div className="text-2xl text-white py-0 px-1">Hi</div>
-        <div className="text-2xl">nder</div>
-        // text-black bg-orange-500 py-0 px-1 rounded-md
+        <div className="text-2xl text-black bg-orange-500 py-0 px-1 rounded-md">
+          nder
+        </div>
       </Link>
 
       <div className="self-end flex flex-row">
