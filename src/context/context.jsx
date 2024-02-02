@@ -8,7 +8,6 @@ export const ContextProvider = createContext(null);
 
 export const Context = ({ children }) => {
   const { allUsers, loggedInUser, setLoggedInUser, setNewUser } = useSetUsers();
-
   const { userImage, saveImage } = useUseCamera();
   const [activeUser, setActiveUser] = useState(null);
   const { carouselImages, setCarouselImages, removeCarouselImage } =
@@ -29,7 +28,6 @@ export const Context = ({ children }) => {
     loggedInUser,
     setLoggedInUser,
     setNewUser,
-
     userImage,
     saveImage,
     activeUser,
