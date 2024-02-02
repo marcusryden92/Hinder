@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from "react";
-import { useContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 import useSetUsers from "../hooks/useSetUsers";
 import useUseCamera from "../hooks/useUseCamera";
@@ -8,13 +7,7 @@ import useSetCarousel from "../hooks/useSetCarousel";
 export const ContextProvider = createContext(null);
 
 export const Context = ({ children }) => {
-  const {
-    allUsers,
-    loggedInUser,
-    setLoggedInUser,
-    setNewUser,
-    setupTestUsers,
-  } = useSetUsers();
+  const { allUsers, loggedInUser, setLoggedInUser, setNewUser } = useSetUsers();
 
   const { userImage, saveImage } = useUseCamera();
   const [activeUser, setActiveUser] = useState(null);
@@ -36,7 +29,7 @@ export const Context = ({ children }) => {
     loggedInUser,
     setLoggedInUser,
     setNewUser,
-    setupTestUsers,
+
     userImage,
     saveImage,
     activeUser,

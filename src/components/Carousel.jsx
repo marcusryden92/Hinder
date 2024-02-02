@@ -1,5 +1,6 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+
 export default function Carousel() {
   const { carouselImages, setActiveUser } = useContext(ContextProvider);
 

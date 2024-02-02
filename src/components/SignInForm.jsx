@@ -1,12 +1,11 @@
 import loginImg from "../assets/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import { useContext } from "react";
+import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useFindUser from "../hooks/useFindUser";
 
 export default function SignInForm() {
-  const { setupTestUsers, setLoggedInUser } = useContext(ContextProvider);
+  const { setLoggedInUser } = useContext(ContextProvider);
   const usernameBox = useRef();
   const passwordBox = useRef();
   const navigate = useNavigate();
@@ -29,13 +28,6 @@ export default function SignInForm() {
         <img className="w-full h-full object-cover" src={loginImg} alt="" />
       </div>
       <div className=" bg-gradient-to-r from-indigo-300 to-purple-500 flex flex-col justify-center">
-        <button
-          onClick={setupTestUsers}
-          className=" absolute top-0 p-2 bg-red-500 w-[10rem] rounded-lg active:bg-red-900 active:text-white"
-        >
-          press for users
-        </button>
-
         <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center">
           <h2 className="text-4xl dark:text-black mb-6 font-bold">SIGN IN</h2>
           <div className=" flex flex-col py-2 text-black">

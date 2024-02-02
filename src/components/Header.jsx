@@ -1,7 +1,7 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
-import { useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useNavigateTo from "../hooks/useNavigateTo";
 

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
-import { useContext } from "react";
+import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useNavigateTo from "../hooks/useNavigateTo";
 
