@@ -3,6 +3,7 @@ import Carousel from "../components/Carousel";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { ContextProvider } from "../context/context";
+import useFindUserIndex from "../hooks/useFindUserIndex";
 
 export default function MainPage() {
   const { loggedInUser } = useContext(ContextProvider);
@@ -18,11 +19,25 @@ export default function MainPage() {
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const usersWithoutUser = users.filter(
+    const filterUser = users.filter(
       (u) => u?.username !== loggedInUser.username
     );
 
-    setCarouselImages(usersWithoutUser);
+    const loggedInUserIndex = useFindUserIndex(loggedInUser.username);
+
+    const filterUserAndLikes = filterUser.filter((person) => {
+      return !users[loggedInUserIndex].liked.includes(person.username);
+    });
+
+    const filterUserAndLikesAndDislikes = filterUserAndLikes.filter(
+      (person) => {
+        return !users[loggedInUserIndex].disliked.includes(person.username);
+      }
+    );
+
+    const filteredCarousel = filterUserAndLikesAndDislikes;
+
+    setCarouselImages(filteredCarousel);
   }, [loggedInUser]);
 
   useEffect(() => {
