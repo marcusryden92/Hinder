@@ -1,61 +1,14 @@
-import { createContext, useState, useEffect } from "react";
-import { useAuth } from "./AuthenticationContext";
-import { setItem } from "localforage";
-import { Users } from "lucide-react";
-
-export const ContextProvider = createContext({
-  userImage: null,
-  saveImage: () => {},
-  allUsers: null,
-  user: null,
-  handleImageClick: () => {},
-  selectedUser: null,
-  setSelectedUser: () => {},
-  handleRemoveImage: () => {},
-  carouselUsers: [],
-  setCarouselUsers: () => {},
-  personalLikes: [],
-});
+import { createContext, useContext } from "react";
+import useSetUsers from "../hooks/useSetUsers";
+export const ContextProvider = createContext(null);
 
 export const Context = ({ children }) => {
-  const [userImage, setUserImage] = useState(null);
-  const { allUsers, user } = useAuth();
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [carouselUsers, setCarouselUsers] = useState([]);
-
-  let [personalLikes, setPersonalLikes] = useState([]);
-
-  const handleRemoveImage = (selectedUser) => {
-    const newUsers = carouselUsers.filter(
-      (user) => user.username !== selectedUser.username
-    );
-    setTimeout(() => {
-      setSelectedUser(newUsers[Math.floor(Math.random() * newUsers.length)]);
-    }, 200);
-    setCarouselUsers(newUsers);
-  };
-
-  const handleImageClick = (user) => {
-    setSelectedUser(user);
-  };
-
-  const saveImage = (img) => {
-    const imageSrc = img.current.getScreenshot();
-    setUserImage(imageSrc);
-  };
+  const { loggedInUser, setLoggedInUser, setNewUser } = useSetUsers();
 
   const value = {
-    userImage,
-    saveImage,
-    allUsers,
-    handleImageClick,
-    selectedUser,
-    setSelectedUser,
-    handleRemoveImage,
-    carouselUsers,
-    setCarouselUsers,
-    user,
-    personalLikes,
+    loggedInUser,
+    setLoggedInUser,
+    setNewUser,
   };
 
   return (
@@ -63,4 +16,12 @@ export const Context = ({ children }) => {
       {children}
     </ContextProvider.Provider>
   );
+};
+
+export const useAuth = () => {
+  const context = useContext(ContextProvider);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthenticationProvider");
+  }
+  return context;
 };

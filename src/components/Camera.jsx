@@ -1,11 +1,8 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Webcam from "react-webcam";
-import { useContext } from "react";
-import { ContextProvider } from "../context/context";
 
-export default function Camera() {
+export default function Camera({ saveImage, userImage }) {
   const webcamRef = useRef(null);
-  const { saveImage, userImage } = useContext(ContextProvider);
 
   return (
     <div className="flex flex-row w-[500px] h-[400px] rounded-[1.5rem] p-6 m-10 bg-white shadow-md shadow-gray-500">
@@ -25,14 +22,7 @@ export default function Camera() {
         </button>
       </div>
       <div className="flex flex-col-reverse ">
-        {
-          /*userInfo.map((user, index) => (
-          <div key={index}>
-            <p>{user.userName}</p>
-            <img src={user.image} className="w-20 h-20" alt="" />
-          </div>
-        ))*/ <img className="rounded-[1rem] w-48 " src={userImage} />
-        }
+        <img className="rounded-[1rem] w-48 " src={userImage} />
       </div>
     </div>
   );

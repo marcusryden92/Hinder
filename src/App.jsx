@@ -5,26 +5,23 @@ import Matches from "./pages/Matches";
 import Root from "./pages/Root";
 import { Context } from "./context/context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthenticationProvider } from "./context/AuthenticationContext";
-import PrivateRoutes from "./components/PrivateRoutes";
+import PrivateRoutes from "./context/PrivateRoutes";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthenticationProvider>
-        <Context>
-          <Routes>
-            <Route index element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route element={<PrivateRoutes />}>
-              <Route path="/mainpage" element={<Root />}>
-                <Route index element={<MainPage />} />
-              </Route>
-              <Route path="/matches" element={<Matches />} />
+      <Context>
+        <Routes>
+          <Route index element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/mainpage" element={<Root />}>
+              <Route index element={<MainPage />} />
             </Route>
-          </Routes>
-        </Context>
-      </AuthenticationProvider>
+            <Route path="/matches" element={<Matches />} />
+          </Route>
+        </Routes>
+      </Context>
     </BrowserRouter>
   );
 }

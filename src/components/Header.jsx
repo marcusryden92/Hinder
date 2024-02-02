@@ -1,14 +1,21 @@
-import React from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthenticationContext";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
+import { ContextProvider } from "../context/context";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
 
-  const { user, handleLogOut } = useAuth();
+  const { loggedInUser, setLoggedInUser } = useContext(ContextProvider);
+
+  const handleLogOut = () => {
+    setLoggedInUser(null);
+    navigate("/");
+  };
 
   return (
     <div
@@ -35,12 +42,12 @@ export default function Header() {
         <div
           className="header-icon bg-gray-400 font-bold h-8 w-8 rounded-full mx-1"
           style={{
-            backgroundImage: `url(${user.image})`,
+            backgroundImage: `url(${loggedInUser?.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div className="pt-1">{user.name}</div>
+        <div className="pt-1">{loggedInUser.name}</div>
       </div>
 
       <Link
