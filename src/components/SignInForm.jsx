@@ -11,10 +11,17 @@ export default function SignInForm() {
   const navigate = useNavigate();
 
   function handleLogIn(username, password) {
-    const member = useFindUser(username);
+    const users = JSON.parse(localStorage.getItem("users"));
+    const foundUserIndex = users.findIndex((u) => {
+      return u.username === username;
+    });
 
-    if (member && newUser.password === password) {
-      setLoggedInUser(newUser);
+    if (
+      users[foundUserIndex] &&
+      users[foundUserIndex].username === username &&
+      users[foundUserIndex].password === password
+    ) {
+      setLoggedInUser(users[foundUserIndex]);
       navigate("/mainpage");
       return true;
     } else {

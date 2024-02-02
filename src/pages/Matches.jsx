@@ -4,12 +4,6 @@ import { ContextProvider } from "../context/context";
 import { Link } from "react-router-dom";
 
 function Matches() {
-  const { personalLikes } = useContext(ContextProvider);
-
-  useEffect(() => {
-    console.log(personalLikes);
-  }, [personalLikes]);
-
   return (
     <div className="m-8 relative overflow-auto">
       <Link to="/mainpage">Main Page</Link>

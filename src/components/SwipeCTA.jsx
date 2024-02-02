@@ -1,13 +1,24 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
+import { ContextProvider } from "../context/context";
+import useFindUser from "../hooks/useFindUser";
 
 export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   const [animation, setAnimation] = useState("");
+  const { loggedInUser } = useContext(ContextProvider);
 
   const handleAnimate = (state) => {
     setAnimation(state);
     setTimeout(() => {
       setAnimation(null);
     }, 600);
+  };
+
+  const handleLike = (activeUser) => {
+    const users = JSON.parse(localStorage.getItem("users"));
+    const currentlyLoggedInUser = useFindUser(loggedInUser.username);
+
+    currentlyLoggedInUser.likes.push(activeUser.username);
+    localStorage.setItem("users", JSON.stringify(users));
   };
 
   return (
@@ -29,6 +40,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
           onClick={() => {
             handleAnimate("liked");
             removeCarouselImage(activeUser);
+            handleLike(activeUser);
           }}
           className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem]"
         >
