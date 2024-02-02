@@ -4,7 +4,6 @@ import { useContext } from "react";
 import useSetUsers from "../hooks/useSetUsers";
 import useUseCamera from "../hooks/useUseCamera";
 import useSetCarousel from "../hooks/useSetCarousel";
-import useNavigateTo from "../hooks/useNavigateTo";
 
 export const ContextProvider = createContext(null);
 
@@ -17,17 +16,10 @@ export const Context = ({ children }) => {
     setupTestUsers,
   } = useSetUsers();
 
-  const { goTo } = useNavigateTo();
-
   const { userImage, saveImage } = useUseCamera();
   const [activeUser, setActiveUser] = useState(null);
   const { carouselImages, setCarouselImages, removeCarouselImage } =
     useSetCarousel();
-
-  const handleLogOut = () => {
-    setLoggedInUser(null);
-    goTo("/");
-  };
 
   useEffect(() => {
     if (loggedInUser) {
@@ -52,7 +44,6 @@ export const Context = ({ children }) => {
     carouselImages,
     setCarouselImages,
     removeCarouselImage,
-    handleLogOut,
   };
 
   return (

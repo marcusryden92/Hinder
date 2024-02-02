@@ -1,15 +1,22 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
 import { useContext } from "react";
 import { ContextProvider } from "../context/context";
+import useNavigateTo from "../hooks/useNavigateTo";
 
 export default function Header() {
+  const { goTo } = useNavigateTo();
+
   const ICONSIZE = 35;
   let MATCHCOUNT = 2;
 
-  const { loggedInUser, handleLogOut } = useContext(ContextProvider);
+  const { loggedInUser, setLoggedInUser } = useContext(ContextProvider);
+
+  const handleLogOut = () => {
+    setLoggedInUser(null);
+    goTo("/");
+  };
 
   return (
     <div
