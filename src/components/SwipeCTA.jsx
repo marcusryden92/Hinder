@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useFindUserIndex from "../hooks/useFindUserIndex";
-import useHandleLike from "../hooks/useHandleLike";
 
 export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   const [animation, setAnimation] = useState("");

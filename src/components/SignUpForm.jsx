@@ -40,6 +40,7 @@ export default function SignUpForm({ userImage }) {
       description: description.current.value,
       image: userImage,
       liked: [],
+      disliked: [],
     };
 
     setNewUser(newUser);
