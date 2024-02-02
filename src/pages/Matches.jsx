@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import useGetMatches from "../hooks/useGetMatches";
 
 function Matches() {
-  const { loggedInUser } = useContext(ContextProvider);
-  const matches = useGetMatches(loggedInUser.username);
+  const { loggedInUser, matches } = useContext(ContextProvider);
 
   return (
     <div className="m-8 relative overflow-auto">

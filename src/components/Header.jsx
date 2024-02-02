@@ -5,12 +5,12 @@ import { MdOutlineExitToApp } from "react-icons/md";
 import { ContextProvider } from "../context/context";
 
 export default function Header() {
+  const { loggedInUser, setLoggedInUser, matches } =
+    useContext(ContextProvider);
   const navigate = useNavigate();
 
   const ICONSIZE = 35;
-  let MATCHCOUNT = 2;
-
-  const { loggedInUser, setLoggedInUser } = useContext(ContextProvider);
+  let MATCHCOUNT = matches.length;
 
   const handleLogOut = () => {
     setLoggedInUser(null);

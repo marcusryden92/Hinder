@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
 import { ContextProvider } from "../context/context";
 import useFindUserIndex from "../hooks/useFindUserIndex";
+import useGetMatches from "../hooks/useGetMatches";
 
 export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   const [animation, setAnimation] = useState("");
-  const { loggedInUser } = useContext(ContextProvider);
+  const { loggedInUser, setMatches } = useContext(ContextProvider);
 
   const handleAnimate = (state) => {
     setAnimation(state);
@@ -18,6 +19,9 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
     const currentlyLoggedInUserIndex = useFindUserIndex(loggedInUser.username);
     users[currentlyLoggedInUserIndex].liked.push(activeUser.username);
     localStorage.setItem("users", JSON.stringify(users));
+
+    const tempMatches = useGetMatches(loggedInUser.username);
+    setMatches(tempMatches);
   };
 
   return (

@@ -1,14 +1,25 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import useSetUsers from "../hooks/useSetUsers";
 export const ContextProvider = createContext(null);
+import useGetMatches from "../hooks/useGetMatches";
 
 export const Context = ({ children }) => {
   const { loggedInUser, setLoggedInUser, setNewUser } = useSetUsers();
+  const [matches, setMatches] = useState([]);
+
+  useEffect(() => {
+    if (loggedInUser) {
+      const tempMatches = useGetMatches(loggedInUser.username);
+      setMatches(tempMatches);
+    }
+  }, [loggedInUser]);
 
   const value = {
     loggedInUser,
     setLoggedInUser,
     setNewUser,
+    matches,
+    setMatches,
   };
 
   return (
