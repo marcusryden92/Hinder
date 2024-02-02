@@ -2,7 +2,6 @@ import loginImg from "../assets/login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
-import useFindUser from "../hooks/useFindUser";
 
 export default function SignInForm() {
   const { setLoggedInUser } = useContext(ContextProvider);

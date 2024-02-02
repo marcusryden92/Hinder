@@ -39,7 +39,7 @@ export default function SignUpForm({ userImage }) {
       password: password.current.value,
       description: description.current.value,
       image: userImage,
-      likes: [],
+      liked: [],
     };
 
     setNewUser(newUser);
