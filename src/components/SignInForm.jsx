@@ -11,9 +11,9 @@ export default function SignInForm() {
   const navigate = useNavigate();
 
   function handleLogIn(username, password) {
-    const newUser = useFindUser(username);
+    const member = useFindUser(username);
 
-    if (newUser && newUser.password === password) {
+    if (member && newUser.password === password) {
       setLoggedInUser(newUser);
       navigate("/mainpage");
       return true;

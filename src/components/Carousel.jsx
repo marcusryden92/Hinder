@@ -1,9 +1,4 @@
-import { useContext } from "react";
-import { ContextProvider } from "../context/context";
-
-export default function Carousel() {
-  const { carouselImages, setActiveUser } = useContext(ContextProvider);
-
+export default function Carousel({ setActiveUser, carouselImages }) {
   if (!carouselImages) return null;
   return (
     <div className="m-8 relative overflow-auto">

@@ -1,10 +1,8 @@
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import Webcam from "react-webcam";
-import { ContextProvider } from "../context/context";
 
-export default function Camera() {
+export default function Camera({ saveImage, userImage }) {
   const webcamRef = useRef(null);
-  const { saveImage, userImage } = useContext(ContextProvider);
 
   return (
     <div className="flex flex-row w-[500px] h-[400px] rounded-[1.5rem] p-6 m-10 bg-white shadow-md shadow-gray-500">

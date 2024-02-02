@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
-import useNavigateTo from "../hooks/useNavigateTo";
 
-export default function SignUpForm() {
+export default function SignUpForm({ userImage }) {
+  const navigate = useNavigate();
   const { setNewUser } = useContext(ContextProvider);
-  const { userImage } = useContext(ContextProvider);
-  const { goTo } = useNavigateTo();
   const name = useRef();
   const description = useRef();
   const password = useRef();
@@ -28,7 +26,7 @@ export default function SignUpForm() {
       !usernameIsTaken
     ) {
       handleRegister();
-      goTo("/mainpage");
+      navigate("/mainpage");
     } else {
       alert("Please fill in all fields or make sure the username isn't taken");
     }

@@ -1,10 +1,7 @@
 import { useState, useContext, useEffect } from "react";
-import { ContextProvider } from "../context/context";
 
-export default function SwipeCTA() {
+export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   const [animation, setAnimation] = useState("");
-  const { activeUser, removeCarouselImage, setActiveUser, carouselImages } =
-    useContext(ContextProvider);
 
   const handleAnimate = (state) => {
     setAnimation(state);
@@ -12,15 +9,6 @@ export default function SwipeCTA() {
       setAnimation(null);
     }, 600);
   };
-
-  useEffect(() => {
-    const setRandomImage = () => {
-      const randomImage =
-        carouselImages[Math.floor(Math.random() * carouselImages.length)];
-      setActiveUser(randomImage);
-    };
-    setRandomImage();
-  }, [carouselImages]);
 
   return (
     <div className="ml-auto mr-auto w-[95vw] h-[80vh] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 max-w-[60rem] max-h-[37rem] rounded-lg shadow-xl p-5">
