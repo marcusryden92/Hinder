@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { HiMiniHeart } from 'react-icons/hi2';
-import { MdOutlineExitToApp } from 'react-icons/md';
-import { ContextProvider } from '../context/context';
-import logo from '../assets/hinderlogo.png';
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { HiMiniHeart } from "react-icons/hi2";
+import { MdOutlineExitToApp } from "react-icons/md";
+import { ContextProvider } from "../context/context";
+import logo from "../assets/hinderlogo.png";
 
 export default function Header() {
   const { loggedInUser, setLoggedInUser, matches } =
@@ -15,7 +15,7 @@ export default function Header() {
 
   const handleLogOut = () => {
     setLoggedInUser(null);
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -25,53 +25,50 @@ export default function Header() {
       top-0
       z-50	
       flex 
-      flex-row
-      flex-end
       justify-between
       items-center
-      align-middle
       w-screen 
-      p-2 h-14
-      pt-2 
       shadow-lg
       text-black 
       text-xl
       capitalize
       font-bold
-       bg-indigo-200
-      
+       bg-pink-100
+       p-4
       `}
     >
-      <div className='flex gap-2 items-center'>
+      <div className="flex items-center justify-center">
         <div
-          className='header-icon bg-gray-400 font-bold h-12 w-12 rounded-full mx-1'
+          className="flex mr-2 items-center justify-center header-icon bg-gray-400 font-bold h-12 w-12 rounded-full border-2 "
           style={{
             backgroundImage: `url(${loggedInUser?.image})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         />
-        <div className='pt-1'>{loggedInUser.name}</div>
+        <div className=" uppercase text-sm translate-y-1">
+          {loggedInUser.name}
+        </div>
       </div>
 
       <Link
-        to='/mainpage'
-        className='flex flex-row font-bold ml-32 hover:scale-105 transition ease-in-out duration-500'
+        to="/mainpage"
+        className="hover:scale-105 transition ease-in-out duration-500"
       >
-        <img className='w-40 h-full object-cover' src={logo} alt='' />
+        <img className="w-32" src={logo} alt="" />
       </Link>
 
-      <div className='self-end flex flex-row'>
-        <div className=' header-icon text-2xl flex justify-center items-end w-20 mr-2'>
-          <Link to='/matches'>
+      <div className="self-end flex flex-row">
+        <div className=" header-icon text-2xl flex justify-center items-end w-20 mr-2">
+          <Link to="/matches">
             <HeaderIcon
               icon={
                 <HiMiniHeart
                   size={ICONSIZE}
                   className={`${
                     MATCHCOUNT
-                      ? 'text-rose-700 hover:text-rose-500'
-                      : 'text-black hover:text-gray-200'
+                      ? "text-rose-700 hover:text-rose-500"
+                      : "text-black hover:text-gray-200"
                   } hover:scale-110 transition ease-in-out duration-500`}
                 />
               }
@@ -79,7 +76,7 @@ export default function Header() {
           </Link>
           <div
             className={`text-xl mb-0.5 mr-1 ${
-              MATCHCOUNT ? 'text-rose-500' : 'text-black'
+              MATCHCOUNT ? "text-rose-500" : "text-black"
             }`}
           >
             {MATCHCOUNT}
@@ -90,7 +87,7 @@ export default function Header() {
             icon={
               <MdOutlineExitToApp
                 size={ICONSIZE}
-                className='black hover:text-gray-200 transition ease-in-out duration-500'
+                className="black hover:text-gray-200 transition ease-in-out duration-500"
               />
             }
           />
@@ -101,5 +98,5 @@ export default function Header() {
 }
 
 const HeaderIcon = ({ icon }) => {
-  return <div className='header-icon pt-2'>{icon}</div>;
+  return <div className="header-icon pt-2">{icon}</div>;
 };
