@@ -53,7 +53,7 @@ export default function SignUpForm({ userImage, saveImage }) {
   const webcamRef = useRef(null);
 
   return (
-    <div className=' flex flex-row bg-white  justify-center items-center '>
+    <div className=' flex flex-row bg-white  justify-center items-center rounded-lg '>
       <div>
         <img src={logo} alt='profil'></img>
 
