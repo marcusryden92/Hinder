@@ -1,4 +1,4 @@
-import useQuoteApi from "../hooks/useQuoteApi";
+import useQuoteApi from '../hooks/useQuoteApi';
 
 export default function Footer() {
   const { quote } = useQuoteApi();
@@ -12,8 +12,8 @@ export default function Footer() {
     p-2 h-14
     pt-4 
     shadow-lg
-    text-gray-300
-    bg-zinc-900 `}
+    text-black-300
+    bg-indigo-200 `}
     >
       "{quote}"
     </div>

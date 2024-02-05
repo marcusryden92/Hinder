@@ -1,6 +1,5 @@
-import SignUpForm from "../components/SignUpForm";
-import Camera from "../components/Camera";
-import { useState } from "react";
+import SignUpForm from '../components/SignUpForm';
+import { useState } from 'react';
 
 export default function SignUp() {
   const [userImage, setUserImage] = useState(null);
@@ -11,12 +10,9 @@ export default function SignUp() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full bg-gradient-to-r from-indigo-300 to-purple-500">
-      <div className=" flex flex-col justify-center">
-        <Camera userImage={userImage} saveImage={saveImage} />
-      </div>
-      <div className=" flex flex-col justify-center">
-        <SignUpForm userImage={userImage} />
+    <div className='grid grid-cols-1  h-full w-full  bg-gradient-to-r from-orange-500 to-pink-500'>
+      <div className=' flex flex-col justify-center items-center'>
+        <SignUpForm userImage={userImage} saveImage={saveImage} />
       </div>
     </div>
   );
