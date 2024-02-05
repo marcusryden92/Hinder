@@ -30,7 +30,7 @@ export default function SwipeCTA({
   };
 
   return (
-    <div className='  bg-white min-h-[30rem] ml-auto mr-auto w-[95vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 max-w-[60rem] shadow-xl p-5'>
+    <div className=' rounded-lg bg-white min-h-[30rem] ml-auto mr-auto w-[95vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 max-w-[60rem] shadow-xl p-5'>
       <div
         className={` overflow-hidden relative h-auto w-[100%] md:h-[100%] md:w-auto rounded-lg flex-1 flex justify-center items-center gap-10`}
       >
