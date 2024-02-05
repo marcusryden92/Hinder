@@ -15,7 +15,12 @@ export default function Footer() {
     text-black-300
     bg-indigo-200 `}
     >
-      "{quote}"
+      "{quote}" <br />
+      Group project by{' '}
+      <a href='https://github.com/OskarSollenberg'>Oskar</a>,{' '}
+      <a href='https://github.com/marcusryden92'>Marcus</a>,
+      <a href='https://github.com/mvacjar'>Maria</a> and{' '}
+      <a href='https://github.com/Nesrinemh'>Nesrine</a>.
     </div>
   );
 }
