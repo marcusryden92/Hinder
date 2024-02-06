@@ -12,7 +12,7 @@ export default function Footer() {
     pt-4 
     shadow-lg
     text-black-300
-    bg-white
+    bg-pink-100
     p-6 `}
     >
       "{quote}" <br />

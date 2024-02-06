@@ -1,28 +1,42 @@
 import { useRef } from "react";
 import Webcam from "react-webcam";
+import logo from "../assets/hinderlogo.png";
 
 export default function Camera({ saveImage, userImage }) {
   const webcamRef = useRef(null);
 
   return (
-    <div className="flex flex-row w-[500px] h-[400px] rounded-[1.5rem] p-6 m-10 bg-white shadow-md shadow-gray-500">
-      <div>
-        <Webcam
-          className="rounded-[1rem]"
-          height={300}
-          width={300}
-          audio={false}
-          ref={webcamRef}
-        ></Webcam>
+    <div className="flex flex-col justify-center items-center relative">
+      <img
+        className="max-w-[10rem] translate-x-[-8px]"
+        src={logo}
+        alt="profil"
+      ></img>
+
+      <div className="flex flex-col items-center mt-2">
+        <div className="relative">
+          <Webcam
+            className="rounded-[1rem] bg-pink-100 p-6 border-2 rounded-medium shadow-webcam"
+            height={300}
+            width={300}
+            audio={false}
+            ref={webcamRef}
+          ></Webcam>
+          <img
+            className={`w-16 absolute top-[1.6rem] right-[1.6rem] rounded-sm ${
+              userImage ? "border-b-2 border-l-2 border-pink-100 " : "border-0"
+            }`}
+            src={userImage}
+          />
+        </div>
+
         <button
-          className="bg-pink-500 text-white px-5 py-2 my-5 rounded-lg"
+          type="button"
+          className="w-full my-5 py-2 bg-pink-500 max-w-[15rem] shadow-small text-white font-semibold rounded-lg hover:bg-[#ff6a7b] hover:shadow-medium focus:outline-none focus:ring-2 focus:ring-[#660066] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
           onClick={() => saveImage(webcamRef)}
         >
           Capture
         </button>
-      </div>
-      <div className="flex flex-col-reverse ">
-        <img className="rounded-[1rem] w-48 " src={userImage} />
       </div>
     </div>
   );

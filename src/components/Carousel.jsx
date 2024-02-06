@@ -9,7 +9,7 @@ export default function Carousel({ setActiveUser, carouselImages }) {
               return (
                 <div
                   key={index}
-                  className={`w-56 h-[10rem] m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer hover:shadow-large transition duration-300 ease-in-out scale-100 hover:scale-105 border-4 border-black shadow-medium`}
+                  className={`w-56 h-[10rem] m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer hover:shadow-large transition duration-300 ease-in-out scale-100 hover:scale-105 border-2 border-black`}
                   onClick={() => {
                     setActiveUser(user);
                   }}

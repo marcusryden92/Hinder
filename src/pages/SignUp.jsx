@@ -1,4 +1,5 @@
 import SignUpForm from "../components/SignUpForm";
+import Camera from "../components/Camera";
 import { useState } from "react";
 
 export default function SignUp() {
@@ -10,8 +11,11 @@ export default function SignUp() {
   };
 
   return (
-    <div className="grid grid-cols-1 h-full w-full bg-pink-100">
-      <div className="flex flex-col justify-center items-center">
+    <div className="flex h-full w-full bg-white max-w-[85rem] max-h-[60rem]">
+      <div className="flex flex-1 justify-center items-center w-[100%]">
+        <Camera userImage={userImage} saveImage={saveImage} />
+      </div>
+      <div className="flex flex-1 justify-center items-center">
         <SignUpForm userImage={userImage} saveImage={saveImage} />
       </div>
     </div>
