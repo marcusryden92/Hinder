@@ -1,4 +1,3 @@
-import loginImg from "../assets/login.jpg";
 import loveImg from "../assets/love.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";

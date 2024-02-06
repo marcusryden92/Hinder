@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
 
-export default function SignUpForm({ userImage, saveImage }) {
+export default function SignUpForm({ userImage }) {
   const navigate = useNavigate();
   const { setNewUser } = useContext(ContextProvider);
   const name = useRef();
