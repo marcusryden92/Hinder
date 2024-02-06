@@ -6,7 +6,7 @@ function Matches() {
   const { matches } = useContext(ContextProvider);
 
   return (
-    <div className="relative overflow-hidden h-screen w-screen p-10">
+    <div className="relative overflow-hidden w-screen p-10">
       <h1 className="text-3xl font-bold text-center">Your Matches</h1>
       <Link to="/mainpage">
         <button className="bg-indigo-200 m-4 hover:bg-pink-400 text-black font-bold py-2 px-4 rounded ">
