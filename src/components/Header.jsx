@@ -23,7 +23,8 @@ export default function Header() {
       className={`
       sticky
       top-0
-      z-50	
+      z-50
+      h-14	
       flex 
       justify-between
       items-center
@@ -39,7 +40,9 @@ export default function Header() {
     >
       <div className="flex items-center justify-center">
         <div
-          className="flex mr-2 items-center justify-center header-icon bg-gray-400 font-bold h-12 w-12 rounded-full border-2 "
+          className="font-sans flex mr-2 items-center justify-center 
+          header-icon bg-gray-400 font-bold h-10 w-10 
+          rounded-full hover:scale-110 transition ease-in-out duration-500 "
           style={{
             backgroundImage: `url(${loggedInUser?.image})`,
             backgroundSize: "cover",
@@ -55,11 +58,11 @@ export default function Header() {
         to="/mainpage"
         className="hover:scale-105 transition ease-in-out duration-500"
       >
-        <img className="w-32" src={logo} alt="" />
+        <img className="w-48" src={logo} alt="" />
       </Link>
 
-      <div className="self-end flex flex-row">
-        <div className=" header-icon text-2xl flex justify-center items-end w-20 mr-2">
+      <div className="pb-2 flex flex-row">
+        <div className="header-icon text-2xl flex justify-center items-end w-20 mr-2">
           <Link to="/matches">
             <HeaderIcon
               icon={
@@ -67,8 +70,8 @@ export default function Header() {
                   size={ICONSIZE}
                   className={`${
                     MATCHCOUNT
-                      ? "text-rose-700 hover:text-rose-500"
-                      : "text-black hover:text-gray-200"
+                      ? "text-rose-600 hover:text-rose-500"
+                      : "text-black hover:text-black"
                   } hover:scale-110 transition ease-in-out duration-500`}
                 />
               }
@@ -87,7 +90,7 @@ export default function Header() {
             icon={
               <MdOutlineExitToApp
                 size={ICONSIZE}
-                className="black hover:text-gray-200 transition ease-in-out duration-500"
+                className="black hover:scale-105 transition ease-in-out duration-500"
               />
             }
           />

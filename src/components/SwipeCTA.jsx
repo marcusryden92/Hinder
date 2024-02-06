@@ -38,8 +38,8 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
           }}
           className=" text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border  bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem] grid justify-center items-center"
         >
-          <span className="z-10 text-[2rem] ">
-            <ImCross className="fill-red-600 hover:fill-white" />
+          <span className="z-10 text-[2rem] text-red-500 hover:text-white  transition ease-in-out duration-500">
+            <ImCross className="" />
           </span>
         </button>
 
@@ -51,8 +51,8 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
           }}
           className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem] grid justify-center items-center"
         >
-          <span className="z-10">
-            <HiMiniHeart className="fill-green-600 text-[3rem] hover:fill-white" />
+          <span className="z-10 text-green-500 text-[3rem] hover:text-white  transition ease-in-out duration-500">
+            <HiMiniHeart />
           </span>
         </button>
         {activeUser ? (
