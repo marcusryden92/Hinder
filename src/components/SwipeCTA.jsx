@@ -26,6 +26,16 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
     setMatches(tempMatches);
   };
 
+  const handleDislike = () => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const currentlyLoggedInUserIndex = useFindUserIndex(loggedInUser.username);
+    users[currentlyLoggedInUserIndex].disliked.push(activeUser.username);
+    localStorage.setItem("users", JSON.stringify(users));
+
+    const tempMatches = useGetMatches(loggedInUser.username);
+    setMatches(tempMatches);
+  };
+
   return (
     <div className=" bg-white min-h-[25rem] max-h-[30rem] mb-10 rounded-lg ml-auto mr-auto w-[70vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 p-[2rem] shadow-webcam ">
       <div
@@ -35,6 +45,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
           onClick={() => {
             handleAnimate("disliked");
             removeCarouselImage(activeUser);
+            handleDislike();
           }}
           className=" text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border  bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem] grid justify-center items-center"
         >
