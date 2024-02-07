@@ -11,7 +11,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex h-full w-full bg-white max-w-[85rem] max-h-[60rem]">
+    <div className="flex h-full w-[100vw] bg-white max-w-[85rem] max-h-[60rem]">
       <div className="flex flex-1 justify-center items-center w-[100%]">
         <Camera userImage={userImage} saveImage={saveImage} />
       </div>
