@@ -30,7 +30,7 @@ export default function SignInForm() {
   }
 
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 text-black w-[100vw] h-[100vh] max-w-[80rem] max-h-[50rem]">
+    <div className=" grid grid-cols-1 md:grid-cols-2 text-black w-[100vw] h-[100vh] max-w-[70rem] max-h-[50rem]">
       <div className="hidden md:block overflow-hidden">
         <img className="h-[100%]" src={loveImg} alt="" />
       </div>
