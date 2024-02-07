@@ -11,12 +11,14 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex h-full w-[100vw] bg-white max-w-[85rem] max-h-[60rem]">
-      <div className="flex flex-1 justify-center items-center w-[100%]">
-        <Camera userImage={userImage} saveImage={saveImage} />
-      </div>
-      <div className="flex flex-1 justify-center items-center">
-        <SignUpForm userImage={userImage} saveImage={saveImage} />
+    <div className="w-screen h-screen flex justify-center items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center h-[100vh] w-[100vw] md:max-w-[80rem] max-h-[50rem] bg-white">
+        <div className="flex justify-center items-center">
+          <Camera userImage={userImage} saveImage={saveImage} />
+        </div>
+        <div className="flex justify-center items-center">
+          <SignUpForm userImage={userImage} saveImage={saveImage} />
+        </div>
       </div>
     </div>
   );

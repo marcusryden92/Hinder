@@ -30,12 +30,12 @@ export default function SignInForm() {
   }
 
   return (
-    <div className="max-h-[100vh] grid grid-cols-1 sm:grid-cols-2 h-screen w-full text-black">
-      <div className="hidden sm:block">
-        <img className="object-fit h-screen" src={loveImg} alt="" />
+    <div className=" grid grid-cols-1 md:grid-cols-2 text-black w-[100vw] h-[100vh] max-w-[80rem] max-h-[40rem]">
+      <div className="hidden md:block overflow-hidden">
+        <img className="h-[100%]" src={loveImg} alt="" />
       </div>
       <div className="flex flex-col justify-center">
-        <form className=" max-w-[400px] w-full mx-auto bg-white p-8 px-8 rounded-lg  text-center shadow-medium">
+        <form className="w-[70%] mx-auto bg-white p-8 px-8 rounded-lg text-center shadow-medium">
           <img src={logo}></img>
           <div className=" mt-10 flex flex-col py-2">
             <label>Username</label>

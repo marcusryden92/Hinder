@@ -37,9 +37,9 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   };
 
   return (
-    <div className=" bg-white min-h-[25rem] max-h-[30rem] mb-10 rounded-lg ml-auto mr-auto w-[70vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 p-[2rem] shadow-webcam ">
+    <div className=" bg-white min-h-[25rem] max-h-[30rem] max-w-[50rem] mb-10 rounded-lg ml-auto mr-auto w-[70vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 p-[2rem] shadow-webcam ">
       <div
-        className={` overflow-hidden relative h-auto w-[100%] md:h-[100%] md:w-auto rounded-lg flex-1 flex justify-center items-center gap-10`}
+        className={` md:overflow-hidden relative h-auto w-[100%] md:h-[100%] md:w-auto rounded-lg flex-1 flex justify-center items-center gap-10`}
       >
         <button
           onClick={() => {
@@ -47,7 +47,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
             removeCarouselImage(activeUser);
             handleDislike();
           }}
-          className=" text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border  bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem] grid justify-center items-center"
+          className=" text-red absolute bottom-10 hover:before:bg-redborder-red-500 h-16 w-16 rounded-full overflow-hidden border  bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-500 before:transition-all before:duration-500 hover:text-white hover:shadow-red-500 hover:before:left-0 hover:before:w-full mr-[10rem] grid justify-center items-center translate-x-[2rem] translate-y-[14rem] sm:translate-x-0 sm:translate-y-0 z-50"
         >
           <span className="z-10 text-[2rem] text-red-500 hover:text-white  transition ease-in-out duration-500">
             <ImCross className="" />
@@ -60,7 +60,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
             removeCarouselImage(activeUser);
             handleLike();
           }}
-          className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem] grid justify-center items-center"
+          className="text-red absolute bottom-10 h-16 w-16 rounded-full overflow-hidden border border-green-500 bg-white px-3 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white hover:shadow-green-500 hover:before:left-0 hover:before:w-full ml-[10rem] grid justify-center items-center translate-x-[-2rem] sm:translate-x-0 translate-y-[14rem] sm:translate-y-0 z-50"
         >
           <span className="z-10 text-green-500 text-[3rem] hover:text-white  transition ease-in-out duration-500">
             <HiMiniHeart />
@@ -92,7 +92,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
           {activeUser?.name}
         </h5>
 
-        <div className="text-black text-center p-5 text-md ">
+        <div className="text-black text-center p-2 text-[.7rem] ">
           {activeUser?.description}
         </div>
       </div>

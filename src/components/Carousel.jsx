@@ -2,14 +2,14 @@ export default function Carousel({ setActiveUser, carouselImages }) {
   if (!carouselImages) return null;
   return (
     <>
-      <div className=" bg-white overflow-auto min-h-[192px] w-full m-auto relative">
+      <div className=" bg-white overflow-auto min-h-[192px] w-[50rem] m-auto relative">
         <div className="w-fit">
-          <div className="flex gap-[2rem] pt-5 pb-5">
+          <div className="flex gap-[2rem]">
             {carouselImages.map((user, index) => {
               return (
                 <div
                   key={index}
-                  className={`w-56 h-[10rem] m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer hover:shadow-large transition duration-300 ease-in-out scale-100 hover:scale-105 border-2 border-black`}
+                  className={`w-56 h-[10rem] m-3 rounded-xl overflow-hidden flex flex-col relative group cursor-pointer hover:shadow-large transition duration-300 ease-in-out scale-100 hover:scale-105`}
                   onClick={() => {
                     setActiveUser(user);
                   }}

@@ -22,7 +22,6 @@ export default function Header() {
     <div
       className={`
       sticky
-      top-0
       z-50
       h-14	
       flex 
