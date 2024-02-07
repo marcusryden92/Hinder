@@ -50,7 +50,7 @@ export default function MainPage() {
   }, [carouselImages]);
 
   return (
-    <div className="bg-white flex flex-col gap-10">
+    <div className="bg-white flex flex-col gap-10 max-w-[80rem]">
       <Carousel setActiveUser={setActiveUser} carouselImages={carouselImages} />
       <SwipeCTA
         activeUser={activeUser}
