@@ -41,14 +41,14 @@ export default function Header() {
         <div
           className="font-sans flex mr-2 items-center justify-center 
           header-icon font-bold h-10 w-10 
-          rounded-full hover:scale-110 transition ease-in-out duration-500 "
+          rounded-full hover:scale-110 transition ease-in-out duration-500 border-2 border-black"
           style={{
             backgroundImage: `url(${loggedInUser?.image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        <div className=" uppercase text-sm translate-y-1">
+        <div className=" uppercase text-sm translate-y-1 ">
           {loggedInUser.name}
         </div>
       </div>
