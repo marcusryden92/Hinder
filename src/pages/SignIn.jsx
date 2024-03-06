@@ -1,8 +1,18 @@
+import React from "react";
 import SignInForm from "../components/SignInForm";
+import landingPageImage from "../assets/skyline.jpg";
 
 export default function SignIn() {
   return (
-    <div className="w-[100vw] h-[100vh] flex justify-center items-center">
+    <div
+      style={{
+        backgroundImage: `url(${landingPageImage})`,
+        width: "150vw",
+        height: "100vh",
+        backgroundPosition: "bottom",
+      }}
+      className="bg-center bg-cover flex justify-center items-center"
+    >
       <SignInForm />
     </div>
   );
