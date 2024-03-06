@@ -33,14 +33,14 @@ export default function Header() {
       text-xl
       capitalize
       font-bold
-       bg-pink-100
        p-4
+	   min-h-[70px]
       `}
     >
       <div className="flex items-center justify-center">
         <div
           className="font-sans flex mr-2 items-center justify-center 
-          header-icon bg-gray-400 font-bold h-10 w-10 
+          header-icon font-bold h-10 w-10 
           rounded-full hover:scale-110 transition ease-in-out duration-500 "
           style={{
             backgroundImage: `url(${loggedInUser?.image})`,

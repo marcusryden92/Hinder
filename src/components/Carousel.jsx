@@ -2,7 +2,7 @@ export default function Carousel({ setActiveUser, carouselImages }) {
   if (!carouselImages) return null;
   return (
     <>
-      <div className=" bg-white overflow-auto w-screen min-h-[192px] max-w-[50rem] m-auto relative">
+      <div className=" overflow-auto w-screen min-h-[192px] max-w-[50rem] m-auto relative">
         <div className="w-fit">
           <div className="flex gap-[2rem]">
             {carouselImages.map((user, index) => {

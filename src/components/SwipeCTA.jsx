@@ -37,7 +37,7 @@ export default function SwipeCTA({ activeUser, removeCarouselImage }) {
   };
 
   return (
-    <div className=" bg-white min-h-[25rem] max-h-[30rem] max-w-[50rem] mb-10 rounded-lg ml-auto mr-auto w-[70vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 p-[2rem] shadow-webcam ">
+    <div className=" bg-white min-h-[25rem] max-h-[30rem] max-w-[50rem] mb-10 rounded-lg ml-auto mr-auto w-[70vw] text-[.8rem] grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 p-[2rem] shadow-medium ">
       <div
         className={` md:overflow-hidden relative h-auto w-[100%] md:h-[100%] md:w-auto rounded-lg flex-1 flex justify-center items-center gap-10`}
       >
