@@ -47,35 +47,35 @@ export default function SignUpForm({ userImage }) {
   };
 
   return (
-    <form className="rounded-lg text-center md:min-w-[30rem] min-w-[20rem]">
-      <div className=" flex flex-col items-center py-2 text-black">
+    <form className="rounded-lg text-center md:min-w-[30rem] min-w-[20rem] text-black">
+      <div className=" flex flex-col items-center py-2 ">
         <label>Name</label>
         <input
-          className=" w-[80%] rounded-lg bg-gray-200 mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
           type="text"
           ref={name}
         />
       </div>
-      <div className="items-center  flex flex-col py-2 text-black">
+      <div className="items-center  flex flex-col py-2 ">
         <label>Username</label>
         <input
-          className=" w-[80%] rounded-lg bg-gray-200 mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
           type="text"
           ref={username}
         />
       </div>
-      <div className="items-center flex flex-col py-2 text-black">
+      <div className="items-center flex flex-col py-2 ">
         <label>Password</label>
         <input
-          className=" w-[80%]  p-2 rounded-lg bg-gray-200 mt-2 focus:text-white  focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%]  p-2 rounded-lg bg-white mt-2 focus:text-white  focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
           type="password"
           ref={password}
         />
       </div>
-      <div className="items-center flex flex-col py-2 text-black">
+      <div className="items-center flex flex-col py-2 ">
         <label>Description</label>
         <textarea
-          className=" w-[80%]  resize-none rounded-lg bg-gray-200 mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+          className=" w-[80%] resize-none focus:bg-pink-500 focus:text-white rounded-lg bg-white mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
           placeholder="Some words to describe yourself ..."
           type="text"
           ref={description}
