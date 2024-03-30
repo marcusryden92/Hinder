@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
-import { fakeUsers } from "../fakeUsers";
 
 export default function SignUpForm({ userImage }) {
   const navigate = useNavigate();
@@ -47,22 +46,8 @@ export default function SignUpForm({ userImage }) {
     setNewUser(newUser);
   };
 
-  /* for setting up fake users */
-  //   const handleFakeUser = () => {
-  //     fakeUsers.map((user) => {
-  //       setNewUser(user);
-  //     });
-  //   };
-
   return (
     <form className="rounded-lg text-center md:min-w-[30rem] min-w-[20rem] text-white">
-      {/* for setting up fake users */}
-      {/* <button
-        onClick={handleFakeUser}
-        className=" border-2 border-black p-4 bg-white rounded-md"
-      >
-        setup fake users
-      </button> */}
       <div className=" flex flex-col items-center py-2 ">
         <label>Name</label>
         <input
