@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import Webcam from "react-webcam";
-import logo from "../assets/hinderlogo.png";
 
 export default function Camera({ saveImage, userImage }) {
   const webcamRef = useRef(null);

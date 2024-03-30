@@ -2,7 +2,6 @@ import loveImg from "../assets/love.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
-import logo from "../assets/hinderlogo.png";
 
 export default function SignInForm() {
   const { setLoggedInUser } = useContext(ContextProvider);
