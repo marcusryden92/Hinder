@@ -7,12 +7,7 @@ export default function Camera({ saveImage, userImage }) {
 
   return (
     <div className="flex flex-col justify-center items-center relative">
-      <img
-        className="max-w-[10rem] translate-x-[-8px]"
-        src={logo}
-        alt="profil"
-      ></img>
-
+      <h1 className="text-[2rem] text-[#FF6A7B]">HINDER</h1>
       <div className="flex flex-col items-center mt-2">
         <div className="relative">
           <Webcam

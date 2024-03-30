@@ -33,7 +33,7 @@ export default function SignInForm() {
     <div className=" flex justify-center items-center md:grid-cols-2 text-black w-[100vw] h-[100vh] max-w-[70rem] max-h-[50rem]">
       <form className="w-[70%]  mx-auto max-w-[25rem] bg-white p-8 px-8 rounded-lg text-center shadow-medium">
         <div className="max-w-[15rem] mx-auto">
-          <img src={logo}></img>
+          <h1 className="text-[2rem] text-[#FF6A7B]">HINDER</h1>
         </div>
         <div className=" mt-10 flex flex-col py-2">
           <label>Username</label>

@@ -11,6 +11,7 @@ export default function Root() {
         backgroundImage: `url(${landingPageImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${landingPageImage})`,
       }}
       className="h-screen w-screen flex flex-col justify-between items-center overflow-hidden"
     >

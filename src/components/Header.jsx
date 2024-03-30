@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiMiniHeart } from "react-icons/hi2";
 import { MdOutlineExitToApp } from "react-icons/md";
 import { ContextProvider } from "../context/context";
-import logo from "../assets/hinderlogo.png";
 
 export default function Header() {
   const { loggedInUser, setLoggedInUser, matches } =
@@ -29,7 +28,7 @@ export default function Header() {
       items-center
       w-screen 
       shadow-lg
-      text-black 
+      text-white 
       text-xl
       capitalize
       font-bold
@@ -41,7 +40,7 @@ export default function Header() {
         <div
           className="font-sans flex mr-2 items-center justify-center 
           header-icon font-bold h-10 w-10 
-          rounded-full hover:scale-110 transition ease-in-out duration-500 border-2 border-black"
+          rounded-full hover:scale-110 transition ease-in-out duration-500 border-2 border-white"
           style={{
             backgroundImage: `url(${loggedInUser?.image})`,
             backgroundSize: "cover",
@@ -57,11 +56,10 @@ export default function Header() {
         to="/mainpage"
         className="hover:scale-105 transition ease-in-out duration-500"
       >
-        <img className="w-48" src={logo} alt="" />
+        <h1 className="text-[2rem] text-[#FF6A7B]">HINDER</h1>
       </Link>
-
-      <div className="pb-2 flex flex-row">
-        <div className="header-icon text-2xl flex justify-center items-end w-20 mr-2">
+      <div className="pb-2 flex flex-row ">
+        <div className="header-icon text-2xl flex justify-center items-end w-20 mr-2 group">
           <Link to="/matches">
             <HeaderIcon
               icon={
@@ -70,15 +68,15 @@ export default function Header() {
                   className={`${
                     MATCHCOUNT
                       ? "text-rose-600 hover:text-rose-500"
-                      : "text-black hover:text-black"
-                  } hover:scale-110 transition ease-in-out duration-500`}
+                      : "text-black group-hover:text-white"
+                  } hover:scale-110 transition ease-in-out duration-500 `}
                 />
               }
             />
           </Link>
           <div
-            className={`text-xl mb-0.5 mr-1 ${
-              MATCHCOUNT ? "text-rose-500" : "text-black"
+            className={`text-xl mb-0.5 mr-1 transition ease-in-out duration-500  ${
+              MATCHCOUNT ? "text-rose-500" : "text-black group-hover:text-white"
             }`}
           >
             {MATCHCOUNT}

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { ContextProvider } from "../context/context";
+import { fakeUsers } from "../fakeUsers";
 
 export default function SignUpForm({ userImage }) {
   const navigate = useNavigate();
@@ -46,12 +47,26 @@ export default function SignUpForm({ userImage }) {
     setNewUser(newUser);
   };
 
+  /* for setting up fake users */
+  //   const handleFakeUser = () => {
+  //     fakeUsers.map((user) => {
+  //       setNewUser(user);
+  //     });
+  //   };
+
   return (
-    <form className="rounded-lg text-center md:min-w-[30rem] min-w-[20rem] text-black">
+    <form className="rounded-lg text-center md:min-w-[30rem] min-w-[20rem] text-white">
+      {/* for setting up fake users */}
+      {/* <button
+        onClick={handleFakeUser}
+        className=" border-2 border-black p-4 bg-white rounded-md"
+      >
+        setup fake users
+      </button> */}
       <div className=" flex flex-col items-center py-2 ">
         <label>Name</label>
         <input
-          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 text-black focus:outline-none"
           type="text"
           ref={name}
         />
@@ -59,7 +74,7 @@ export default function SignUpForm({ userImage }) {
       <div className="items-center  flex flex-col py-2 ">
         <label>Username</label>
         <input
-          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%] rounded-lg bg-white mt-2 p-2 focus:text-white focus:border-violet-800 focus:bg-pink-500 text-black focus:outline-none"
           type="text"
           ref={username}
         />
@@ -67,7 +82,7 @@ export default function SignUpForm({ userImage }) {
       <div className="items-center flex flex-col py-2 ">
         <label>Password</label>
         <input
-          className=" w-[80%]  p-2 rounded-lg bg-white mt-2 focus:text-white  focus:border-violet-800 focus:bg-pink-500 focus:outline-none"
+          className=" w-[80%]  p-2 rounded-lg bg-white mt-2 focus:text-white  focus:border-violet-800 focus:bg-pink-500 text-black focus:outline-none"
           type="password"
           ref={password}
         />
@@ -75,7 +90,7 @@ export default function SignUpForm({ userImage }) {
       <div className="items-center flex flex-col py-2 ">
         <label>Description</label>
         <textarea
-          className=" w-[80%] resize-none focus:bg-pink-500 focus:text-white rounded-lg bg-white mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
+          className=" w-[80%] resize-none focus:bg-pink-500 text-black focus:text-white rounded-lg bg-white mt-2 p-2 focus:border-violet-800 focus:bg-purple-200 focus:outline-none"
           placeholder="Some words to describe yourself ..."
           type="text"
           ref={description}
