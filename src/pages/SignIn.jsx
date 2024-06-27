@@ -11,7 +11,7 @@ export default function SignIn() {
         height: "100vh",
         backgroundPosition: "bottom",
       }}
-      className="bg-center bg-cover flex justify-center items-center"
+      className="bg-center bg-cover overflow-hidden flex justify-center items-center"
     >
       <SignInForm />
     </div>
